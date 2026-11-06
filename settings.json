@@ -1,0 +1,12 @@
+{
+  "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+  "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+  "seed": 7,
+  "cpu_threads": 4,
+  "image_edge": 512,
+  "max_new_tokens": 16,
+  "learning_rate": 0.001,
+  "timeout_seconds": 1200,
+  "memory_limit_gib": 10,
+  "minimum_available_gib": 6
+}

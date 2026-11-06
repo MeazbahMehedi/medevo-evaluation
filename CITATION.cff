@@ -1,0 +1,49 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below, together with the MedEvo paper."
+title: "MedEvo Evaluation Study"
+type: software
+authors:
+  - given-names: "Md Meazbah Mehedi"
+    family-names: "Prodhan"
+repository-code: "https://github.com/MeazbahMehedi/medevo-evaluation"
+license: MIT
+keywords:
+  - medical visual question answering
+  - vision-language models
+  - VQA-RAD
+  - SLAKE
+  - MedEvo
+references:
+  - type: article
+    title: "MedEvo: Medical Reasoning Evolution through Knowledge Navigation"
+    authors:
+      - family-names: "Wang"
+        given-names: "Xiaoliang"
+      - family-names: "Chen"
+        given-names: "Zhuo"
+      - family-names: "Zheng"
+        given-names: "Chuanyang"
+      - family-names: "Wang"
+        given-names: "Quanbin"
+      - family-names: "Lao"
+        given-names: "Jiangwei"
+      - family-names: "Liu"
+        given-names: "Yingao"
+      - family-names: "Liu"
+        given-names: "Jiajia"
+      - family-names: "Cao"
+        given-names: "Jinming"
+      - family-names: "Lin"
+        given-names: "Honglin"
+      - family-names: "Lu"
+        given-names: "Zhihong"
+      - family-names: "Jin"
+        given-names: "Hao"
+      - family-names: "Wang"
+        given-names: "Jian"
+      - family-names: "Wu"
+        given-names: "Lijun"
+    identifiers:
+      - type: other
+        value: "arXiv:2610.17690"
+    year: 2026

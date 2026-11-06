@@ -1,0 +1,31 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv*/
+
+# Editors and local configuration
+.idea/
+.vscode/
+.env
+.env.*
+
+# Benchmark data: keep the split manifests and their README, not the images
+data/*
+!data/README.md
+!data/benchmarks/
+data/benchmarks/*
+!data/benchmarks/dataset.json
+!data/benchmarks/*.jsonl
+
+# Local run outputs; selected evidence is copied to results/
+outputs/
+
+# Model files and caches
+*.safetensors
+*.bin
+*.pt
+*.pth
+.cache/
+
+# Archives
+*.zip
