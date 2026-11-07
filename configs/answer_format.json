@@ -1,0 +1,4 @@
+{
+  "experiment_id": "concise-boxed-v1",
+  "prompt": "Answer the question directly using a word, number, or short phrase.\nPut your final answer inside \\boxed{}.\nDo not include an explanation."
+}

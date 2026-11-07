@@ -1,0 +1,69 @@
+{
+  "paper_audit": {
+    "ACTION": "REPAIR",
+    "AUDIT_STATUS": "resolved",
+    "STEP_SUMMARY": [
+      {
+        "step": 1,
+        "summary": "Restates greater lucency as lower projected density."
+      },
+      {
+        "step": 2,
+        "summary": "Claims that greater right-lung air content makes that hemithorax denser."
+      },
+      {
+        "step": 3,
+        "summary": "Repeats the reversed relationship between aeration and radiographic density."
+      },
+      {
+        "step": 4,
+        "summary": "Calls the left side more opaque, contradicting the question and first step."
+      }
+    ],
+    "ENTROPY_ASSESSMENT": {
+      "proposed_anchor": 2,
+      "proposed_window": [
+        1,
+        2,
+        3
+      ],
+      "proposal_status": "HIT",
+      "brief_reason": "Step 2 first reverses the relationship between air content and radiographic density; step 1 is a supported descriptive restatement."
+    },
+    "AUDIT_ANCHOR": 2,
+    "SAFE_PREFIX_END": {
+      "step_index": 1,
+      "verbatim_ending_span": " The left hemithorax is more lucent because it is less dense than the right hemithorax."
+    },
+    "AUDIT_WINDOW": {
+      "start_step": 2,
+      "end_step": 3
+    },
+    "ERROR_TYPE": "K",
+    "ERROR_SUBTYPE": "K1",
+    "KEY_ERROR": "Step 2 explicitly treats additional air as increasing radiographic density, demonstrating a missing prerequisite about attenuation. The image does not independently establish its asserted aeration difference. Step 4 additionally contradicts the supplied lucency description.",
+    "HINT_TYPE": "knowledge_bridging",
+    "MINIMAL_HINT": "Check the relationship between air content and X-ray attenuation before attributing the side-to-side lucency to lung aeration.",
+    "IMAGE_CHECK": {
+      "applicable": true,
+      "target": "Relative hemithoracic lucency, lung aeration, and overlying chest-wall shadows."
+    },
+    "KNOWLEDGE_SCOPE": "Basic relationship between air content, X-ray attenuation, and image lucency; the reversed causal statement directly exposes the prerequisite gap.",
+    "DIFFERENTIAL_FOCUS": null,
+    "STOP_CONDITION": "Resolve the attenuation relationship before inferring the anatomical source of asymmetry.",
+    "PREFIX_REVIEW": {
+      "all_retained_steps_supported": true,
+      "reason": "Step 1 correctly describes the observed/question-supplied lucency as lower projected attenuation without asserting its anatomical cause."
+    },
+    "CONFIDENCE": "high",
+    "LIMITATIONS": "Single portable frontal radiograph cannot securely establish the cause of asymmetry. Audit identifies the explicit attenuation error without offering a corrected diagnosis. Independent AI audit, not clinician validation."
+  },
+  "legacy_audit": {
+    "action": "repair",
+    "first_error_step": 2,
+    "error_family": "K",
+    "prefix_supported": true,
+    "hint": "Check the relationship between air content and X-ray attenuation before attributing the side-to-side lucency to lung aeration.",
+    "evidence": "Step 1 is a valid descriptive restatement of greater lucency. Step 2 incorrectly argues that more air makes a hemithorax radiographically denser, exposing a prerequisite attenuation error. Later steps repeat that inversion and contradict the initial lucency description. The cause of asymmetry remains unassigned."
+  }
+}

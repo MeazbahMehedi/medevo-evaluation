@@ -1,0 +1,12 @@
+{
+  "pilot_id": "training-repair-pilot-v1",
+  "selection": {"vqa_rad": 2, "slake": 1},
+  "rollout_max_new_tokens": 128,
+  "suffix_max_new_tokens": 128,
+  "readout_max_new_tokens": 32,
+  "auditor_base_url": "http://127.0.0.1:11434/v1",
+  "auditor_model": "qwen2.5vl:3b",
+  "auditor_max_tokens": 512,
+  "auditor_timeout_seconds": 180,
+  "worker_timeout_seconds": 3600
+}

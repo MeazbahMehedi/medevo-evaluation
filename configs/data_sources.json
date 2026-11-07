@@ -1,0 +1,44 @@
+{
+  "vqa_rad": {
+    "repo_id": "flaviagiammarino/vqa-rad",
+    "revision": "bcf91e7654fb9d51c8ab6a5b82cacf3fafd2fae9",
+    "files": {
+      "train": {
+        "path": "data/train-00000-of-00001-eb8844602202be60.parquet",
+        "sha256": "b07c3441467b99060e5ec412ddd05be06f86f01f23bfa3debfbbcab47874a06e",
+        "size_bytes": 24183983
+      },
+      "test": {
+        "path": "data/test-00000-of-00001-e5bc3d208bb4deeb.parquet",
+        "sha256": "eb520bdab1116dd4f420120da19049d2315389fa126d031f65ec42e153264ea7",
+        "size_bytes": 10312735
+      }
+    }
+  },
+  "slake": {
+    "repo_id": "BoKelvin/SLAKE",
+    "revision": "a9083ce6c34ac3ffb17671a605962924d8a8f9e9",
+    "files": {
+      "train": {
+        "path": "train.json",
+        "sha256": "7a9fb81f9d7bb145c3d7e9bc8d3b9016ba18b6539ea5031a53bae8fd3cd991c3",
+        "size_bytes": 2964571
+      },
+      "validation": {
+        "path": "validation.json",
+        "sha256": "32b016440b0c3be11056a78a18eeab46333268407fbb6e6b32f9f4c2debc50f6",
+        "size_bytes": 639139
+      },
+      "test": {
+        "path": "test.json",
+        "sha256": "6be8f7b4c5a46cdbc713a5210a25b6ed5aa1fd1574c83cefb4f998131f17c2c3",
+        "size_bytes": 635829
+      },
+      "images": {
+        "path": "imgs.zip",
+        "sha256": "44eb7d9214e1ac5b7946e237b669401866df9114fd9a3618c5a84fbffcded0b0",
+        "size_bytes": 212343373
+      }
+    }
+  }
+}

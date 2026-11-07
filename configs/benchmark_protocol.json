@@ -1,0 +1,10 @@
+{
+  "protocol_id": "medical-vqa-cpu-v1",
+  "seed": 7,
+  "rad_feedback_fraction": 0.1,
+  "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+  "max_new_tokens": 128,
+  "evaluation_timeout_seconds": 28800,
+  "scoring_id": "boxed-strict-em-v1",
+  "training_policy": "exclude_exact_test_and_feedback_images"
+}

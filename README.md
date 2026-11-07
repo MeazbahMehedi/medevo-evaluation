@@ -6,7 +6,8 @@ An independent, reduced-scale evaluation of
 [MedEvo: Medical Reasoning Evolution through Knowledge Navigation](https://arxiv.org/abs/2610.17690)
 on the VQA-RAD and SLAKE medical visual question answering benchmarks, run on a single CPU workstation.
 
-**Status:** Phase 1 (environment and CPU feasibility) complete.
+**Status:** Phase 1 (environment and CPU feasibility) and Phase 2 (benchmark preparation and evaluation
+infrastructure) complete.
 
 ## Phase 1: environment and CPU feasibility
 
@@ -22,6 +23,25 @@ CPU-only Windows workstation:
 
 Each check writes its own folder under `outputs/` with settings, environment, result and resource records.
 These are software checks only; they say nothing about medical accuracy.
+
+## Phase 2: benchmark preparation and evaluation
+
+```powershell
+python evaluate.py prepare        # download pinned sources, build split manifests
+python evaluate.py inspect        # validate manifests and images
+python evaluate.py run --benchmark vqa_rad --limit 5
+python evaluate.py score --run-dir outputs\<run folder>
+```
+
+| Dataset | Train | Feedback | Test |
+|---|---:|---:|---:|
+| VQA-RAD | 655 | 79 | 451 |
+| SLAKE (English) | 4,911 | 1,053 | 1,061 |
+
+Training excludes images that appear in the feedback or test roles. Feedback questions are used for
+protocol decisions and test questions only for final evaluation. Predictions are appended to a journal
+after every question, so interrupted runs can resume. See [data/README.md](data/README.md),
+[docs/data_sources.md](docs/data_sources.md) and [docs/protocol.md](docs/protocol.md).
 
 ## Setup
 

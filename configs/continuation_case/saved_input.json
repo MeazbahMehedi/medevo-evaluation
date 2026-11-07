@@ -1,0 +1,84 @@
+{
+  "question": "why is the left hemithorax more lucent?",
+  "response": " The left hemithorax is more lucent because it is less dense than the right hemithorax. The right hemithorax is denser due to the presence of the right lung, which is more filled with air than the left lung. The left lung is less filled with air, which results in a less dense lung field. This is why the left hemithorax appears more opaque on an X-ray, as it is less dense than the right hemithorax.",
+  "steps": [
+    {
+      "step": 1,
+      "start": 0,
+      "end": 87,
+      "text": " The left hemithorax is more lucent because it is less dense than the right hemithorax."
+    },
+    {
+      "step": 2,
+      "start": 87,
+      "end": 207,
+      "text": " The right hemithorax is denser due to the presence of the right lung, which is more filled with air than the left lung."
+    },
+    {
+      "step": 3,
+      "start": 207,
+      "end": 288,
+      "text": " The left lung is less filled with air, which results in a less dense lung field."
+    },
+    {
+      "step": 4,
+      "start": 288,
+      "end": 400,
+      "text": " This is why the left hemithorax appears more opaque on an X-ray, as it is less dense than the right hemithorax."
+    }
+  ],
+  "entropy_proposal": {
+    "status": "measured",
+    "lambda": 0.5,
+    "history": 3,
+    "steps": [
+      {
+        "step": 1,
+        "visible_tokens": 23,
+        "mean_nats": 0.9964853054400958,
+        "q90_nats": 1.946677613258362,
+        "uncertainty": 1.471581459349229,
+        "surge": 0.0,
+        "normalized_uncertainty": 0.0,
+        "normalized_surge": 0.0
+      },
+      {
+        "step": 2,
+        "visible_tokens": 28,
+        "mean_nats": 1.5795306014874118,
+        "q90_nats": 3.358460402488709,
+        "uncertainty": 2.4689955019880605,
+        "surge": 0.9974140426388316,
+        "normalized_uncertainty": 1.0,
+        "normalized_surge": 1.0
+      },
+      {
+        "step": 3,
+        "visible_tokens": 18,
+        "mean_nats": 1.6256967602271795,
+        "q90_nats": 2.8495559215545656,
+        "uncertainty": 2.2376263408908725,
+        "surge": 0.26733786022222783,
+        "normalized_uncertainty": 0.7680309768999635,
+        "normalized_surge": 0.26803097689996347
+      },
+      {
+        "step": 4,
+        "visible_tokens": 31,
+        "mean_nats": 1.4048214321477233,
+        "q90_nats": 2.8482820987701416,
+        "uncertainty": 2.1265517654589323,
+        "surge": 0.06715066471621167,
+        "normalized_uncertainty": 0.6566684226511049,
+        "normalized_surge": 0.0673247636844504
+      }
+    ],
+    "anchor": 2,
+    "window": [
+      1,
+      2,
+      3
+    ],
+    "alignment_policy": "visible token assigned by last decoded character; zero-length special tokens excluded"
+  }
+}

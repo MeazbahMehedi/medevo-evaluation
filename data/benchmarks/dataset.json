@@ -1,0 +1,89 @@
+{
+  "bundle_version": 1,
+  "image_hash_protocol": "rgb-dimensions-v1",
+  "sources": {
+    "vqa_rad": {
+      "repo_id": "flaviagiammarino/vqa-rad",
+      "revision": "bcf91e7654fb9d51c8ab6a5b82cacf3fafd2fae9",
+      "files": {
+        "train": {
+          "path": "data/train-00000-of-00001-eb8844602202be60.parquet",
+          "sha256": "b07c3441467b99060e5ec412ddd05be06f86f01f23bfa3debfbbcab47874a06e",
+          "size_bytes": 24183983
+        },
+        "test": {
+          "path": "data/test-00000-of-00001-e5bc3d208bb4deeb.parquet",
+          "sha256": "eb520bdab1116dd4f420120da19049d2315389fa126d031f65ec42e153264ea7",
+          "size_bytes": 10312735
+        }
+      }
+    },
+    "slake": {
+      "repo_id": "BoKelvin/SLAKE",
+      "revision": "a9083ce6c34ac3ffb17671a605962924d8a8f9e9",
+      "files": {
+        "train": {
+          "path": "train.json",
+          "sha256": "7a9fb81f9d7bb145c3d7e9bc8d3b9016ba18b6539ea5031a53bae8fd3cd991c3",
+          "size_bytes": 2964571
+        },
+        "validation": {
+          "path": "validation.json",
+          "sha256": "32b016440b0c3be11056a78a18eeab46333268407fbb6e6b32f9f4c2debc50f6",
+          "size_bytes": 639139
+        },
+        "test": {
+          "path": "test.json",
+          "sha256": "6be8f7b4c5a46cdbc713a5210a25b6ed5aa1fd1574c83cefb4f998131f17c2c3",
+          "size_bytes": 635829
+        },
+        "images": {
+          "path": "imgs.zip",
+          "sha256": "44eb7d9214e1ac5b7946e237b669401866df9114fd9a3618c5a84fbffcded0b0",
+          "size_bytes": 212343373
+        }
+      }
+    }
+  },
+  "protocol": {
+    "protocol_id": "medical-vqa-cpu-v1",
+    "seed": 7,
+    "rad_feedback_fraction": 0.1,
+    "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+    "max_new_tokens": 128,
+    "evaluation_timeout_seconds": 28800,
+    "scoring_id": "boxed-strict-em-v1",
+    "training_policy": "exclude_exact_test_and_feedback_images"
+  },
+  "counts": {
+    "train": 5566,
+    "feedback": 1132,
+    "test": 1512
+  },
+  "counts_by_dataset_role": {
+    "slake:test": 1061,
+    "slake:train": 4911,
+    "slake:feedback": 1053,
+    "vqa_rad:test": 451,
+    "vqa_rad:train": 655,
+    "vqa_rad:feedback": 79
+  },
+  "source_english_rows": 9276,
+  "exclusion_reasons": {
+    "missing_question_or_reference": 1,
+    "non_english": 6995,
+    "duplicate_adaptation_question": 7,
+    "test_image_overlap": 1059
+  },
+  "manifest_sha256": {
+    "train": "98c698f9fad8b2328d8ac9e3aa607c01f45765b758799ce1e7ed78e7398a494f",
+    "feedback": "b9af58cc3804c6a675dbb1929b63895cc2a90acde0f5c193e62a5ea20835a337",
+    "test": "d557c5b31dcfe2be5053253600efeb94cff579f188ba06993ed09245345c8e20"
+  },
+  "exclusions_sha256": "429a32fb983e147e6f2a1b471ad53714f84fd69ac13564f906ba244588b962de",
+  "limitations": [
+    "Exact decoded-image separation only; no patient-ID or near-duplicate guarantee",
+    "Adaptation pool differs from the source training partitions",
+    "VQA-RAD is a pinned processed distribution; SLAKE uses its pinned author distribution"
+  ]
+}
