@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.4.0] - 2026-11-09
+
+Phase 4: LoRA adaptation.
+
+### Added
+- LoRA adapter for Qwen3.5-2B trained on the 43-example Phase 3 bank (rank 16, 2 epochs, 11 optimizer
+  steps, 0.75% of parameters trainable); mean loss fell from 0.421 to 0.259.
+- Training settings, per-example loss log and adapter configuration in `results/adaptation_v1/`.
+
 ## [0.3.0] - 2026-11-09
 
 Phase 3: frozen protocol, test baselines and training-bank construction.

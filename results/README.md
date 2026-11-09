@@ -13,6 +13,7 @@ Every prediction records the raw model response; scores can be recomputed with `
 | `baselines/qwen35_9b/` | Qwen3.5-9B (Ollama, Q4_K_M) on the 400 reserved test questions |
 | `baselines/qwen35_2b/` | Qwen3.5-2B (Transformers, bfloat16) on the same 400 questions |
 | `training_bank_v1/` | Phase 3 collection on 100 training questions: every case decision (`cases.jsonl`), the admitted examples (`training_bank.jsonl`) and the summary |
+| `adaptation_v1/` | LoRA training run on the 43-example bank: settings, per-example loss log and adapter configuration (adapter weights not included) |
 | `training_bank_v2/` | Re-audit of the 60 v1 failures with the MedEvo-aligned audit prompt; final bank of 43 examples used for training |
 
 Each evaluation folder contains `run.json` (settings, code hashes, model identity), `scored.jsonl`
@@ -45,3 +46,17 @@ its two scores.
 
 v2 outcomes: 3 repairs admitted, 54 with all continuations rejected, 1 hint rejected for leaking the answer,
 1 skipped and 1 invalid audit. Rejection reasons for every attempt are in `training_bank_v2/cases.jsonl`.
+
+## Phase 4 adaptation
+
+| Setting | Value |
+|---|---|
+| Base model | Qwen3.5-2B, revision `15852e8c`, float32 on CPU |
+| Training data | 43 examples (40 correct rollouts, 3 repairs) |
+| LoRA | rank 16, alpha 32, dropout 0.05, language-model linear layers only |
+| Trainable parameters | 16,819,200 of 2,230,060,864 (0.75%) |
+| Optimizer | AdamW, learning rate 1e-4, linear warmup and decay, gradient accumulation 8 |
+| Schedule | 2 epochs, 86 examples, 11 optimizer steps, 19 minutes |
+| Mean training loss | epoch 1: 0.421, epoch 2: 0.259 |
+
+The schedule was fixed before training; no checkpoint was selected on feedback or test data.

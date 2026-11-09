@@ -13,8 +13,8 @@ with a minimal hint, admit only checked examples, and fine-tune with LoRA. All d
 affect results (prompt, output budget, metrics, test subset) are fixed on feedback data before any
 test-set generation.
 
-**Status:** Phases 1-3 complete: frozen protocol, test baselines and a 43-example training bank.
-LoRA adaptation (Phase 4) and the final before/after comparison (Phase 5) follow.
+**Status:** Phases 1-4 complete: frozen protocol, test baselines, a 43-example training bank and a LoRA
+adapter for Qwen3.5-2B. The adapted-model evaluation (Phase 5) follows.
 See [Project status](#project-status).
 
 ## Results
@@ -155,7 +155,7 @@ protocol: [docs/protocol.md](docs/protocol.md).
 | 1 | Environment and CPU feasibility | Complete |
 | 2 | Data preparation and evaluation infrastructure | Complete |
 | 3 | Frozen protocol, test baselines, training bank | Complete (bank v2: 43 examples) |
-| 4 | LoRA adaptation of Qwen3.5-2B | Pending |
+| 4 | LoRA adaptation of Qwen3.5-2B | Complete (43 examples, 2 epochs, 11 optimizer steps) |
 | 5 | Adapted-model evaluation and technical report | Pending |
 
 ## Limitations
