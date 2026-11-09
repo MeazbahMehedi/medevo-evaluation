@@ -1,0 +1,26 @@
+[
+  {
+    "action": "unresolved",
+    "first_error_step": 0,
+    "error_family": "R",
+    "prefix_supported": false,
+    "hint": "first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step   and white matter is not a region, grey-white matter differentiation",
+    "evidence": " white matter is not a region, grey-white matter differentiation"
+  },
+  {
+    "action": "skip",
+    "first_error_step": 0,
+    "error_family": "R",
+    "prefix_supported": false,
+    "hint": "Re-examine the image modality and confirm it is a T2-weighted MRI scan.",
+    "evidence": "The image is a T2-weighted MRI scan, as indicated by the presence of the T2 signal in the image, which is a characteristic feature of T2-weighted MRI scans. axial plane (horizontal) compared to the sagittal and coronal planes (vertical and transverse). T2-weighted MRI scans are often used to visualize the brain's anatomy and function."
+  },
+  {
+    "action": "skip",
+    "first_error_step": 0,
+    "error_family": "R",
+    "prefix_supported": false,
+    "hint": "Recheck the image for a spinal cord.",
+    "evidence": "The image does not contain a spinal cord."
+  }
+]

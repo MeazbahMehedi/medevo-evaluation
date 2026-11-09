@@ -1,0 +1,258 @@
+{
+  "prepared_date": "2026-11-08",
+  "execution_platform": "Linux",
+  "scope": "Validation regression and read-only CLI checks using reported live auditor objects in synthetic surrounding pilot context",
+  "test_suite": {
+    "test_count": 86,
+    "status": "passed",
+    "output_file": "test_results.txt"
+  },
+  "reported_audits": [
+    {
+      "action": "unresolved",
+      "first_error_step": 0,
+      "error_family": "R",
+      "prefix_supported": false,
+      "hint": "first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step   and white matter is not a region, grey-white matter differentiation",
+      "evidence": " white matter is not a region, grey-white matter differentiation"
+    },
+    {
+      "action": "skip",
+      "first_error_step": 0,
+      "error_family": "R",
+      "prefix_supported": false,
+      "hint": "Re-examine the image modality and confirm it is a T2-weighted MRI scan.",
+      "evidence": "The image is a T2-weighted MRI scan, as indicated by the presence of the T2 signal in the image, which is a characteristic feature of T2-weighted MRI scans. axial plane (horizontal) compared to the sagittal and coronal planes (vertical and transverse). T2-weighted MRI scans are often used to visualize the brain's anatomy and function."
+    },
+    {
+      "action": "skip",
+      "first_error_step": 0,
+      "error_family": "R",
+      "prefix_supported": false,
+      "hint": "Recheck the image for a spinal cord.",
+      "evidence": "The image does not contain a spinal cord."
+    }
+  ],
+  "cli_check": {
+    "scope": "Reported audit objects with synthetic pilot context; read-only CLI test",
+    "result": {
+      "status": "complete",
+      "review_folder": "outputs/20261108T050641Z_audit_review_1bc762",
+      "validation_policy": "nonrepair-auxiliary-unused-v2",
+      "recorded_outcomes": {
+        "rejected_invalid_audit": 3
+      },
+      "review_outcomes": {
+        "auditor_unresolved": 1,
+        "auditor_skip": 2
+      },
+      "nonrepair_decision_count": 3,
+      "schema_valid_repair_decision_count": 0,
+      "invalid_saved_audit_count": 0,
+      "unavailable_evidence_count": 0,
+      "new_inference_performed": false,
+      "new_continuations_performed": 0,
+      "training_examples_exported": 0,
+      "case_details": [
+        {
+          "id": "vqa_rad:train:000201",
+          "recorded_outcome": "rejected_invalid_audit",
+          "review_outcome": "auditor_unresolved",
+          "action": "unresolved",
+          "question": "Controlled fixture question?",
+          "initial_answer_readout": "Controlled fixture readout",
+          "reference": "Controlled fixture reference"
+        },
+        {
+          "id": "vqa_rad:train:001467",
+          "recorded_outcome": "rejected_invalid_audit",
+          "review_outcome": "auditor_skip",
+          "action": "skip",
+          "question": "Controlled fixture question?",
+          "initial_answer_readout": "Controlled fixture readout",
+          "reference": "Controlled fixture reference"
+        },
+        {
+          "id": "slake:train:4022",
+          "recorded_outcome": "rejected_invalid_audit",
+          "review_outcome": "auditor_skip",
+          "action": "skip",
+          "question": "Controlled fixture question?",
+          "initial_answer_readout": "Controlled fixture readout",
+          "reference": "Controlled fixture reference"
+        }
+      ]
+    },
+    "source_files_unchanged": true
+  },
+  "fixture_report": {
+    "status": "complete",
+    "purpose": "read-only review of saved auditor decisions; not a rerun or medical validation",
+    "validation_policy": "nonrepair-auxiliary-unused-v2",
+    "source_pilot_folder": "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot",
+    "review_folder": "outputs/20261108T050641Z_audit_review_1bc762",
+    "selected_count": 3,
+    "recorded_outcomes": {
+      "rejected_invalid_audit": 3
+    },
+    "review_outcomes": {
+      "auditor_unresolved": 1,
+      "auditor_skip": 2
+    },
+    "nonrepair_decision_count": 3,
+    "schema_valid_repair_decision_count": 0,
+    "invalid_saved_audit_count": 0,
+    "unavailable_evidence_count": 0,
+    "new_inference_performed": false,
+    "new_continuations_performed": 0,
+    "training_examples_exported": 0,
+    "original_artifacts_modified": false,
+    "input_sha256": {
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/run.json": "284eb067a088235577eb688c361b6fdb39375dd498ea7a0464e6990f73a89153",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/case.json": "8b88d28df6bbf6d25fc591d77991101f59ef8ef3c4a8de5f26ffe90985badbac",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/initial_request.json": "e8ddf23d051cf0ede1d07f2f356e1ae35d3793e33fb7e7c2398b79addd0c1026",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/initial_readout.json": "cae3a9ef81b5338138cb7ee45c15d017a927bc4d6fa49385e97cb416630c5e87",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/verification.json": "984a221a327730576e30ae7edc4ffcfaff0253839b8c383305eeebb6e84b4174",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/initial_reasoning.json": "3b18607e4205633f52b8f775bb7a1d38cbcad6792450346e5df18d352f785b05",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/reasoning_steps.json": "d743a554b8888cc0e2e5ba12b5d53386b782f39f4e431fac1a99140eb11f19c6",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/01/audit_response.json": "203c4c4415222e1180e40b60bd2c5e786750fe3f4432ef135376979b6f724cc1",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/case.json": "41644576dc1853597ac9e1e41a8b2ed4f136568cd478611a3ce28ea2c5b44bd2",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/initial_request.json": "e8ddf23d051cf0ede1d07f2f356e1ae35d3793e33fb7e7c2398b79addd0c1026",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/initial_readout.json": "cae3a9ef81b5338138cb7ee45c15d017a927bc4d6fa49385e97cb416630c5e87",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/verification.json": "984a221a327730576e30ae7edc4ffcfaff0253839b8c383305eeebb6e84b4174",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/initial_reasoning.json": "3b18607e4205633f52b8f775bb7a1d38cbcad6792450346e5df18d352f785b05",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/reasoning_steps.json": "d743a554b8888cc0e2e5ba12b5d53386b782f39f4e431fac1a99140eb11f19c6",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/02/audit_response.json": "e2304b174470833fd2082f0e70ddcaf2e8d637a1bea7e1cd94aabb164e81ba42",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/case.json": "8d51bcdcfdb7c3c7d21729d97acb65c723b20ab92941fa95259ff7b142f529b3",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/initial_request.json": "e8ddf23d051cf0ede1d07f2f356e1ae35d3793e33fb7e7c2398b79addd0c1026",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/initial_readout.json": "cae3a9ef81b5338138cb7ee45c15d017a927bc4d6fa49385e97cb416630c5e87",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/verification.json": "984a221a327730576e30ae7edc4ffcfaff0253839b8c383305eeebb6e84b4174",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/initial_reasoning.json": "3b18607e4205633f52b8f775bb7a1d38cbcad6792450346e5df18d352f785b05",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/reasoning_steps.json": "d743a554b8888cc0e2e5ba12b5d53386b782f39f4e431fac1a99140eb11f19c6",
+      "/workspace/scratch/f80e74ef0731/tmp/audit_review_check/fixture_pilot/cases/03/audit_response.json": "22642e37162f8834513eaadfa796a831df61b84fad655e19e5b44b6b8d2c6c80"
+    },
+    "source_sha256": {
+      "src/__init__.py": "d94b3a1885bab1da09d5bea2959bab977337735b3fb19a76c7305298ff6e47b0",
+      "src/answer_diagnostic.py": "ddd76eaf097177a9a088db52a84c5264744d89beac342b571a3e89bbda09ff78",
+      "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+      "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+      "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+      "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+      "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+      "src/repair_audit.py": "b3ef660bb149b40011545d0d989e79c4d6e730c0cbba4c7f172843d89f55b9bf",
+      "src/repair_model.py": "40a9db216eb9d8ee991a7e8f00ae9925ca695a7212c08e9d8c471c761e4092ab",
+      "src/repair_pilot.py": "da981631fbff9bd3a20cb9d1fe3b6f4af71ebeaced86200efeff548fc1092b94",
+      "src/repair_review.py": "892b8bf39d7bd655c9294b779d706f4edcdcfaa0cc3ea1138c5ce44f7a75a385",
+      "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+      "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+      "evaluate.py": "ab5c640ad512c67ef159a52e5588acc6212e2c1b0949da242aecca5cf3dd02d0"
+    },
+    "cases": [
+      {
+        "id": "vqa_rad:train:000201",
+        "recorded_outcome": "rejected_invalid_audit",
+        "review_outcome": "auditor_unresolved",
+        "new_continuation_performed": false,
+        "question": "Controlled fixture question?",
+        "initial_answer_readout": "Controlled fixture readout",
+        "reference": "Controlled fixture reference",
+        "initial_reasoning": "Controlled fixture sentence. A second fixture sentence.",
+        "raw_audit": {
+          "action": "unresolved",
+          "first_error_step": 0,
+          "error_family": "R",
+          "prefix_supported": false,
+          "hint": "first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step 0 and empty hint if there is no justified reasoning repair, first_error_step   and white matter is not a region, grey-white matter differentiation",
+          "evidence": " white matter is not a region, grey-white matter differentiation"
+        },
+        "action": "unresolved",
+        "provider_finish_reason": "stop",
+        "validation_passed": true,
+        "ignored_auxiliary_fields": [
+          "first_error_step",
+          "error_family",
+          "prefix_supported",
+          "hint"
+        ],
+        "hint_used_for_generation": false
+      },
+      {
+        "id": "vqa_rad:train:001467",
+        "recorded_outcome": "rejected_invalid_audit",
+        "review_outcome": "auditor_skip",
+        "new_continuation_performed": false,
+        "question": "Controlled fixture question?",
+        "initial_answer_readout": "Controlled fixture readout",
+        "reference": "Controlled fixture reference",
+        "initial_reasoning": "Controlled fixture sentence. A second fixture sentence.",
+        "raw_audit": {
+          "action": "skip",
+          "first_error_step": 0,
+          "error_family": "R",
+          "prefix_supported": false,
+          "hint": "Re-examine the image modality and confirm it is a T2-weighted MRI scan.",
+          "evidence": "The image is a T2-weighted MRI scan, as indicated by the presence of the T2 signal in the image, which is a characteristic feature of T2-weighted MRI scans. axial plane (horizontal) compared to the sagittal and coronal planes (vertical and transverse). T2-weighted MRI scans are often used to visualize the brain's anatomy and function."
+        },
+        "action": "skip",
+        "provider_finish_reason": "stop",
+        "validation_passed": true,
+        "ignored_auxiliary_fields": [
+          "first_error_step",
+          "error_family",
+          "prefix_supported",
+          "hint"
+        ],
+        "hint_used_for_generation": false
+      },
+      {
+        "id": "slake:train:4022",
+        "recorded_outcome": "rejected_invalid_audit",
+        "review_outcome": "auditor_skip",
+        "new_continuation_performed": false,
+        "question": "Controlled fixture question?",
+        "initial_answer_readout": "Controlled fixture readout",
+        "reference": "Controlled fixture reference",
+        "initial_reasoning": "Controlled fixture sentence. A second fixture sentence.",
+        "raw_audit": {
+          "action": "skip",
+          "first_error_step": 0,
+          "error_family": "R",
+          "prefix_supported": false,
+          "hint": "Recheck the image for a spinal cord.",
+          "evidence": "The image does not contain a spinal cord."
+        },
+        "action": "skip",
+        "provider_finish_reason": "stop",
+        "validation_passed": true,
+        "ignored_auxiliary_fields": [
+          "first_error_step",
+          "error_family",
+          "prefix_supported",
+          "hint"
+        ],
+        "hint_used_for_generation": false
+      }
+    ]
+  },
+  "new_medical_inference_performed": false,
+  "original_fixture_files_unchanged": true,
+  "windows_original_archive_rechecked_locally": false,
+  "source_sha256": {
+    "src/__init__.py": "d94b3a1885bab1da09d5bea2959bab977337735b3fb19a76c7305298ff6e47b0",
+    "src/answer_diagnostic.py": "ddd76eaf097177a9a088db52a84c5264744d89beac342b571a3e89bbda09ff78",
+    "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+    "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+    "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+    "src/repair_audit.py": "b3ef660bb149b40011545d0d989e79c4d6e730c0cbba4c7f172843d89f55b9bf",
+    "src/repair_model.py": "40a9db216eb9d8ee991a7e8f00ae9925ca695a7212c08e9d8c471c761e4092ab",
+    "src/repair_pilot.py": "da981631fbff9bd3a20cb9d1fe3b6f4af71ebeaced86200efeff548fc1092b94",
+    "src/repair_review.py": "892b8bf39d7bd655c9294b779d706f4edcdcfaa0cc3ea1138c5ce44f7a75a385",
+    "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "evaluate.py": "ab5c640ad512c67ef159a52e5588acc6212e2c1b0949da242aecca5cf3dd02d0"
+  },
+  "primary_model_and_scorer_unchanged": true,
+  "continuation_generator_unchanged": true
+}

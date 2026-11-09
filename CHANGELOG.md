@@ -2,6 +2,24 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.3.0] - 2026-11-09
+
+Phase 3: frozen protocol, test baselines and training-bank construction.
+
+### Added
+- `medevo_study` package and entry points: `freeze_protocol.py`, `prepare_primary_model.py`,
+  `run_test_evaluation.py`, `build_training_bank.py`, `reaudit_failures.py`, `train_adapter.py` and
+  `compile_results.py`.
+- Frozen protocol fixed before any test generation: paper prompt, 1024-token output budget, primary metric
+  and 200 stratified test questions per dataset; amendment 01 adds a secondary metric that reads boxed
+  `1`/`0` as yes/no.
+- Test baselines on the 400 reserved questions: Qwen3.5-9B 57.0%, Qwen3.5-2B 21.5% (47.0% on the
+  secondary metric).
+- Training bank v1 from 100 training questions: 40 verified correct rollouts, 0 repairs.
+- Re-audit (v2) aligned with the MedEvo audit prompt, continuation budget and learnability gates.
+- Feedback and auditor experiments from the earlier part of this phase, with notes in `docs/experiments`
+  and verification records in `docs/verification`.
+
 ## [0.2.0] - 2026-11-08
 
 Phase 2: benchmark preparation and evaluation infrastructure.

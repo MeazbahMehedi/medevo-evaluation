@@ -1,0 +1,99 @@
+{
+  "system": "primary",
+  "role": "feedback",
+  "question_ids": [
+    "vqa_rad:train:000749",
+    "vqa_rad:train:000954",
+    "vqa_rad:train:001213",
+    "vqa_rad:train:000685",
+    "vqa_rad:train:001310",
+    "vqa_rad:train:001745",
+    "vqa_rad:train:000817",
+    "vqa_rad:train:000754",
+    "vqa_rad:train:001714",
+    "vqa_rad:train:001275",
+    "slake:validation:10731",
+    "slake:validation:9866",
+    "slake:validation:10488",
+    "slake:validation:9881",
+    "slake:validation:10041",
+    "slake:validation:10382",
+    "slake:validation:9984",
+    "slake:validation:10739",
+    "slake:validation:10340",
+    "slake:validation:10389"
+  ],
+  "output_token_budget": 1024,
+  "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+  "protocol_sha256": "4fb43de25602b3671483de7fe058f55caee8a19bd759930c79c31401385ed5a0",
+  "adapter_dir": null,
+  "started_utc": "2026-11-08T14:56:07.842000+00:00",
+  "code_sha256": {
+    "medevo_study/__init__.py": "4bf96fdc3bdff4838844ea8ea25261726d8684eee4a238546543f538b645d18b",
+    "medevo_study/collection.py": "f743cac6bbcf57f45d34d51f643aad4db95dec76e10d7e41c41dd538a38fcb82",
+    "medevo_study/core.py": "6176a46b2b4a227671726abd313b0052cff82cfc1052741efe59a0e069670bd1",
+    "medevo_study/ollama_backend.py": "0727a6a531c48f78ceabf6b9f120964a3089432b91f115dfa38f80a3ca8a29a1",
+    "medevo_study/transformers_backend.py": "dfe47b5bdd2b3eaf2d97be2e66b2e12b1e142a91d946b079e0381995fe4de2ff",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "feedback_scoring.py": "3754e8f099df5ae8240e0c57e3d483d48fbfff5c44a8e4c024d84c652401fc6a",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "evaluate_feedback.py": "5b2476c3ce19a9662c1ede4851e66d517d9ad1887fbf5253e7467dc985e6212b"
+  },
+  "attempts": [
+    {
+      "started_utc": "2026-11-08T14:56:14.375350+00:00",
+      "backend": {
+        "model_id": "Qwen/Qwen3.5-2B",
+        "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+        "dtype": "bfloat16",
+        "threads": 8,
+        "device": "cpu",
+        "loader": "AutoModelForMultimodalLM",
+        "transformers": "5.22.2",
+        "torch": "2.15.0+cpu",
+        "adapter_dir": null,
+        "parameters": 2213241664,
+        "settings": {
+          "model_id": "Qwen/Qwen3.5-2B",
+          "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+          "requested_revision": "main",
+          "dtype": "bfloat16",
+          "threads": 8,
+          "max_new_tokens": 1024,
+          "sampling_for_collection": {
+            "temperature": 0.7,
+            "top_p": 0.8,
+            "top_k": 20
+          },
+          "frozen_utc": "2026-11-08T14:55:16.153845+00:00",
+          "readiness_check": {
+            "feedback_id": "slake:validation:10525",
+            "load_seconds": 5.1,
+            "generation_seconds": 15.252,
+            "generated_tokens": 139,
+            "tokens_per_second": 9.11,
+            "hit_token_limit": false,
+            "boxed_answer_present": true,
+            "correct": false,
+            "log_likelihood_check_nats": 0.3235166370868683,
+            "process_rss_gib": 4.94,
+            "raw_response": "The black hollow tissue in the image is the **airway**, specifically the **trachea** (windpipe), which appears as a dark, circular structure in the center of the axial CT scan of the neck.\n\nIn CT imaging, air appears black (hypodense) because it has very low attenuation (low density) compared to soft tissues and bone. The trachea is a hollow organ that contains air, which is why it shows up as a dark circle in this cross-sectional view.\n\nThis is normal anatomy \u2014 the trachea is present in the neck region and is clearly visible here.\n\nFinal Answer:\n\\boxed{trachea}\n"
+          },
+          "loader": {
+            "model_id": "Qwen/Qwen3.5-2B",
+            "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+            "dtype": "bfloat16",
+            "threads": 8,
+            "device": "cpu",
+            "loader": "AutoModelForMultimodalLM",
+            "transformers": "5.22.2",
+            "torch": "2.15.0+cpu",
+            "adapter_dir": null,
+            "parameters": 2213241664
+          }
+        }
+      },
+      "ended_utc": "2026-11-08T15:01:59.285260+00:00"
+    }
+  ]
+}

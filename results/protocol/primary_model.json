@@ -1,0 +1,39 @@
+{
+  "model_id": "Qwen/Qwen3.5-2B",
+  "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+  "requested_revision": "main",
+  "dtype": "bfloat16",
+  "threads": 8,
+  "max_new_tokens": 1024,
+  "sampling_for_collection": {
+    "temperature": 0.7,
+    "top_p": 0.8,
+    "top_k": 20
+  },
+  "frozen_utc": "2026-11-08T14:55:16.153845+00:00",
+  "readiness_check": {
+    "feedback_id": "slake:validation:10525",
+    "load_seconds": 5.1,
+    "generation_seconds": 15.252,
+    "generated_tokens": 139,
+    "tokens_per_second": 9.11,
+    "hit_token_limit": false,
+    "boxed_answer_present": true,
+    "correct": false,
+    "log_likelihood_check_nats": 0.3235166370868683,
+    "process_rss_gib": 4.94,
+    "raw_response": "The black hollow tissue in the image is the **airway**, specifically the **trachea** (windpipe), which appears as a dark, circular structure in the center of the axial CT scan of the neck.\n\nIn CT imaging, air appears black (hypodense) because it has very low attenuation (low density) compared to soft tissues and bone. The trachea is a hollow organ that contains air, which is why it shows up as a dark circle in this cross-sectional view.\n\nThis is normal anatomy \u2014 the trachea is present in the neck region and is clearly visible here.\n\nFinal Answer:\n\\boxed{trachea}\n"
+  },
+  "loader": {
+    "model_id": "Qwen/Qwen3.5-2B",
+    "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+    "dtype": "bfloat16",
+    "threads": 8,
+    "device": "cpu",
+    "loader": "AutoModelForMultimodalLM",
+    "transformers": "5.22.2",
+    "torch": "2.15.0+cpu",
+    "adapter_dir": null,
+    "parameters": 2213241664
+  }
+}

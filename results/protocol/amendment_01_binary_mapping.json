@@ -1,0 +1,11 @@
+{
+  "amendment_id": "01",
+  "recorded_utc": "2026-11-08T15:10:00+00:00",
+  "type": "secondary metric added; primary metric unchanged",
+  "secondary_scorer": "boxed-binary-mapped-em-v1",
+  "definition": "For questions whose reference answer is yes or no, a boxed 1/true is read as yes and 0/false as no; all other answers are scored exactly as the primary metric.",
+  "evidence": "outputs/feedback_check_qwen35_2b_base_v1 (20 feedback questions): Qwen3.5-2B boxed 1/0 in 7 of 20 answers while its text stated yes/no; primary 5/20, secondary 9/20.",
+  "timing": "Recorded before any test-set generation by any system.",
+  "use": "Reported for every system alongside the primary metric. Phase 3 correctness checks keep the strict primary metric, so admitted training targets use worded answers.",
+  "protocol_json_modified": false
+}

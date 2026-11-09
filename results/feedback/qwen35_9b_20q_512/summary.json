@@ -1,0 +1,350 @@
+{
+  "experiment_id": "qwen35-feedback-20-v1",
+  "status": "complete",
+  "purpose": "exploratory fixed feedback subset; not final test evaluation or MedEvo improvement",
+  "model": "qwen3.5:9b",
+  "model_digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90",
+  "selected_count": 20,
+  "generation_requests_started": 20,
+  "overall": {
+    "selected_count": 20,
+    "generated_count": 20,
+    "error_count": 0,
+    "missing_count": 0,
+    "parse_failure_count": 4,
+    "token_limit_count": 4,
+    "coverage_pct": 100.0,
+    "status": "complete",
+    "strict_em_accuracy_pct": 50.0,
+    "normalized_em_accuracy_pct": 50.0,
+    "mean_token_f1_pct": 52.0,
+    "generated_only_metrics": {
+      "strict_em_accuracy_pct": 50.0,
+      "normalized_em_accuracy_pct": 50.0,
+      "mean_token_f1_pct": 52.0
+    },
+    "generation_seconds": 739.151,
+    "boxed_answer_rate_pct": 80.0,
+    "generated_only_boxed_rate_pct": 80.0,
+    "latency_scope": "client round trip including load, image processing and generation",
+    "request_seconds": {
+      "mean": 36.95755,
+      "median": 34.8095,
+      "min": 16.125,
+      "max": 63.487
+    },
+    "generated_tokens": {
+      "mean": 302.6,
+      "median": 276.0,
+      "min": 124,
+      "max": 512
+    },
+    "answer_characters": {
+      "mean": 1316,
+      "median": 1195.5,
+      "min": 515,
+      "max": 2371
+    },
+    "answer_words": {
+      "mean": 198.55,
+      "median": 172.0,
+      "min": 82,
+      "max": 349
+    }
+  },
+  "datasets": {
+    "vqa_rad": {
+      "summary": {
+        "selected_count": 10,
+        "generated_count": 10,
+        "error_count": 0,
+        "missing_count": 0,
+        "parse_failure_count": 4,
+        "token_limit_count": 4,
+        "coverage_pct": 100.0,
+        "status": "complete",
+        "strict_em_accuracy_pct": 30.0,
+        "normalized_em_accuracy_pct": 30.0,
+        "mean_token_f1_pct": 30.0,
+        "generated_only_metrics": {
+          "strict_em_accuracy_pct": 30.0,
+          "normalized_em_accuracy_pct": 30.0,
+          "mean_token_f1_pct": 30.0
+        },
+        "generation_seconds": 452.079,
+        "boxed_answer_rate_pct": 60.0,
+        "generated_only_boxed_rate_pct": 60.0,
+        "latency_scope": "client round trip including load, image processing and generation",
+        "request_seconds": {
+          "mean": 45.2079,
+          "median": 46.446,
+          "min": 20.072,
+          "max": 63.487
+        },
+        "generated_tokens": {
+          "mean": 378.9,
+          "median": 387.0,
+          "min": 164,
+          "max": 512
+        },
+        "answer_characters": {
+          "mean": 1658.4,
+          "median": 1629.5,
+          "min": 743,
+          "max": 2371
+        },
+        "answer_words": {
+          "mean": 246.4,
+          "median": 246.5,
+          "min": 108,
+          "max": 349
+        }
+      },
+      "by_answer_type": {
+        "open": {
+          "selected_count": 3,
+          "generated_count": 3,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 2,
+          "token_limit_count": 2,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 0.0,
+          "normalized_em_accuracy_pct": 0.0,
+          "mean_token_f1_pct": 0.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0
+          },
+          "generation_seconds": 161.265,
+          "boxed_answer_rate_pct": 33.333333333333336,
+          "generated_only_boxed_rate_pct": 33.333333333333336,
+          "latency_scope": "client round trip including load, image processing and generation",
+          "request_seconds": {
+            "mean": 53.755,
+            "median": 59.52,
+            "min": 41.702,
+            "max": 60.043
+          },
+          "generated_tokens": {
+            "mean": 459.3333333333333,
+            "median": 512,
+            "min": 354,
+            "max": 512
+          },
+          "answer_characters": {
+            "mean": 1980.6666666666667,
+            "median": 2152,
+            "min": 1491,
+            "max": 2299
+          },
+          "answer_words": {
+            "mean": 294.6666666666667,
+            "median": 326,
+            "min": 218,
+            "max": 340
+          }
+        },
+        "closed": {
+          "selected_count": 7,
+          "generated_count": 7,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 2,
+          "token_limit_count": 2,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 42.857142857142854,
+          "normalized_em_accuracy_pct": 42.857142857142854,
+          "mean_token_f1_pct": 42.857142857142854,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 42.857142857142854,
+            "normalized_em_accuracy_pct": 42.857142857142854,
+            "mean_token_f1_pct": 42.857142857142854
+          },
+          "generation_seconds": 290.814,
+          "boxed_answer_rate_pct": 71.42857142857143,
+          "generated_only_boxed_rate_pct": 71.42857142857143,
+          "latency_scope": "client round trip including load, image processing and generation",
+          "request_seconds": {
+            "mean": 41.54485714285715,
+            "median": 38.38,
+            "min": 20.072,
+            "max": 63.487
+          },
+          "generated_tokens": {
+            "mean": 344.42857142857144,
+            "median": 331,
+            "min": 164,
+            "max": 512
+          },
+          "answer_characters": {
+            "mean": 1520.2857142857142,
+            "median": 1505,
+            "min": 743,
+            "max": 2371
+          },
+          "answer_words": {
+            "mean": 225.71428571428572,
+            "median": 224,
+            "min": 108,
+            "max": 349
+          }
+        }
+      }
+    },
+    "slake": {
+      "summary": {
+        "selected_count": 10,
+        "generated_count": 10,
+        "error_count": 0,
+        "missing_count": 0,
+        "parse_failure_count": 0,
+        "token_limit_count": 0,
+        "coverage_pct": 100.0,
+        "status": "complete",
+        "strict_em_accuracy_pct": 70.0,
+        "normalized_em_accuracy_pct": 70.0,
+        "mean_token_f1_pct": 74.0,
+        "generated_only_metrics": {
+          "strict_em_accuracy_pct": 70.0,
+          "normalized_em_accuracy_pct": 70.0,
+          "mean_token_f1_pct": 74.0
+        },
+        "generation_seconds": 287.072,
+        "boxed_answer_rate_pct": 100.0,
+        "generated_only_boxed_rate_pct": 100.0,
+        "latency_scope": "client round trip including load, image processing and generation",
+        "request_seconds": {
+          "mean": 28.7072,
+          "median": 26.912,
+          "min": 16.125,
+          "max": 55.309
+        },
+        "generated_tokens": {
+          "mean": 226.3,
+          "median": 202.5,
+          "min": 124,
+          "max": 486
+        },
+        "answer_characters": {
+          "mean": 973.6,
+          "median": 857.5,
+          "min": 515,
+          "max": 2159
+        },
+        "answer_words": {
+          "mean": 150.7,
+          "median": 138.5,
+          "min": 82,
+          "max": 336
+        }
+      },
+      "by_answer_type": {
+        "open": {
+          "selected_count": 7,
+          "generated_count": 7,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 0,
+          "token_limit_count": 0,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 57.142857142857146,
+          "normalized_em_accuracy_pct": 57.142857142857146,
+          "mean_token_f1_pct": 62.85714285714287,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 57.142857142857146,
+            "normalized_em_accuracy_pct": 57.142857142857146,
+            "mean_token_f1_pct": 62.85714285714287
+          },
+          "generation_seconds": 216.72899999999998,
+          "boxed_answer_rate_pct": 100.0,
+          "generated_only_boxed_rate_pct": 100.0,
+          "latency_scope": "client round trip including load, image processing and generation",
+          "request_seconds": {
+            "mean": 30.961285714285715,
+            "median": 28.961,
+            "min": 18.046,
+            "max": 55.309
+          },
+          "generated_tokens": {
+            "mean": 242.85714285714286,
+            "median": 220,
+            "min": 124,
+            "max": 486
+          },
+          "answer_characters": {
+            "mean": 1044.142857142857,
+            "median": 903,
+            "min": 515,
+            "max": 2159
+          },
+          "answer_words": {
+            "mean": 162.85714285714286,
+            "median": 154,
+            "min": 92,
+            "max": 336
+          }
+        },
+        "closed": {
+          "selected_count": 3,
+          "generated_count": 3,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 0,
+          "token_limit_count": 0,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 100.0,
+          "normalized_em_accuracy_pct": 100.0,
+          "mean_token_f1_pct": 100.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 100.0,
+            "normalized_em_accuracy_pct": 100.0,
+            "mean_token_f1_pct": 100.0
+          },
+          "generation_seconds": 70.343,
+          "boxed_answer_rate_pct": 100.0,
+          "generated_only_boxed_rate_pct": 100.0,
+          "latency_scope": "client round trip including load, image processing and generation",
+          "request_seconds": {
+            "mean": 23.447666666666667,
+            "median": 18.625,
+            "min": 16.125,
+            "max": 35.593
+          },
+          "generated_tokens": {
+            "mean": 187.66666666666666,
+            "median": 140,
+            "min": 127,
+            "max": 296
+          },
+          "answer_characters": {
+            "mean": 809,
+            "median": 572,
+            "min": 553,
+            "max": 1302
+          },
+          "answer_words": {
+            "mean": 122.33333333333333,
+            "median": 88,
+            "min": 82,
+            "max": 197
+          }
+        }
+      }
+    }
+  },
+  "scoring_id": "boxed-strict-em-v1",
+  "scorer_sha256": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+  "elapsed_seconds": 739.952,
+  "output_folder": "D:\\MedEvo_Phase1\\outputs\\qwen35_feedback_20_v1",
+  "peak_ollama_ram_gib": null,
+  "training_examples_admitted": 0,
+  "optimizer_steps": 0,
+  "test_generation_requests": 0,
+  "medical_validity": "not_independently_verified"
+}

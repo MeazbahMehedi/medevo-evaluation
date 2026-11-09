@@ -1,0 +1,963 @@
+{
+  "prepared_date": "2026-11-08",
+  "execution_platform": "Linux; not the Windows live-auditor pilot",
+  "test_suite": {
+    "test_count": 79,
+    "status": "passed",
+    "output_file": "test_results.txt"
+  },
+  "real_primary_prefill_check": {
+    "scope": "technical model/processor/prefill check on one training image; no live medical auditor",
+    "id": "vqa_rad:train:000201",
+    "question": "is there grey-white matter differentiation?",
+    "settings": {
+      "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+      "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+      "seed": 7,
+      "cpu_threads": 4,
+      "image_edge": 512,
+      "max_new_tokens": 16,
+      "learning_rate": 0.001,
+      "timeout_seconds": 1200,
+      "memory_limit_gib": 10,
+      "minimum_available_gib": 6
+    },
+    "initial": {
+      "raw_response": " Yes, there is grey-white matter differentiation in the brain. The grey matter is the outer layer of the brain, and it contains the neurons and glial cells that support and protect the brain. The white matter is the inner layer of",
+      "generated_tokens": 48,
+      "generation_seconds": 5.636,
+      "hit_token_limit": true,
+      "input_token_count": 101,
+      "input_ids_sha256": "98519fedbb26e82703be1e15e3be51b8b9f808021210e709871cc3ba45d99374",
+      "input_prefix_unchanged": true,
+      "assistant_prefill_verified": false,
+      "token_entropies_nats": [
+        2.562448263168335,
+        0.35683974623680115,
+        0.9886674880981445,
+        0.23813794553279877,
+        1.9158713817596436,
+        0.20940089225769043,
+        0.0249690692871809,
+        0.05215112492442131,
+        0.02190093882381916,
+        1.674023985862732,
+        0.7655001282691956,
+        3.0971577167510986,
+        2.226085662841797,
+        2.3535046577453613,
+        3.918962001800537,
+        0.35169848799705505,
+        1.845985770225525,
+        2.4666905403137207,
+        2.263568162918091,
+        1.5792603492736816,
+        0.873879075050354,
+        0.5400911569595337,
+        0.4288492798805237,
+        1.2978702783584595,
+        2.3210346698760986,
+        0.9153258204460144,
+        1.3613201379776,
+        1.5244024991989136,
+        2.645498275756836,
+        0.9562119245529175,
+        2.4699172973632812,
+        0.21267344057559967,
+        0.029545476660132408,
+        0.9737957119941711,
+        2.442887783050537,
+        1.5860228538513184,
+        2.071631908416748,
+        0.9382115602493286,
+        1.1071120500564575,
+        1.1945521831512451,
+        0.5124514102935791,
+        0.16395601630210876,
+        0.0020625325851142406,
+        0.8131985068321228,
+        0.22535964846611023,
+        0.21664461493492126,
+        0.17785532772541046,
+        0.5340338945388794
+      ],
+      "entropy": {
+        "status": "measured",
+        "lambda": 0.5,
+        "history": 3,
+        "steps": [
+          {
+            "step": 1,
+            "visible_tokens": 13,
+            "mean_nats": 1.0871657187548966,
+            "q90_nats": 2.4951757431030277,
+            "uncertainty": 1.7911707309289622,
+            "surge": 0.0,
+            "normalized_uncertainty": 0.8704632055372873,
+            "normalized_surge": 0.8783427505929569
+          },
+          {
+            "step": 2,
+            "visible_tokens": 27,
+            "mean_nats": 1.5063149390259274,
+            "q90_nats": 2.467981243133545,
+            "uncertainty": 1.9871480910797361,
+            "surge": 0.19597736015077394,
+            "normalized_uncertainty": 1.0,
+            "normalized_surge": 1.0
+          },
+          {
+            "step": 3,
+            "visible_tokens": 8,
+            "mean_nats": 0.3306952439597808,
+            "q90_nats": 0.6177832782268524,
+            "uncertainty": 0.4742392610933166,
+            "surge": -1.4149201499110324,
+            "normalized_uncertainty": 0.0,
+            "normalized_surge": 0.0
+          }
+        ],
+        "anchor": 2,
+        "window": [
+          1,
+          2,
+          3
+        ],
+        "alignment_policy": "visible token assigned by last decoded character; zero-length special tokens excluded"
+      }
+    },
+    "readout": {
+      "raw_response": " yes",
+      "generated_tokens": 2,
+      "generation_seconds": 2.036,
+      "hit_token_limit": false,
+      "input_token_count": 187,
+      "input_ids_sha256": "a2be8a9e0c4350fb906dd87d21452c13ed086e2850921a35d8e898c2a486dd3f",
+      "input_prefix_unchanged": true,
+      "assistant_prefill_verified": false
+    },
+    "controlled_prefix": "I will inspect the image carefully.",
+    "controlled_hint": "Recheck the visible boundaries before making an inference.",
+    "continuation": {
+      "raw_response": "The image shows a normal brain scan with no obvious signs of pathology. There is no obvious grey-white matter differentiation.",
+      "generated_tokens": 24,
+      "generation_seconds": 3.666,
+      "hit_token_limit": true,
+      "input_token_count": 128,
+      "input_ids_sha256": "11d43b8ec7b07b86c817b5053167759b717219940e63e21c429ad8cee8fd4370",
+      "input_prefix_unchanged": true,
+      "assistant_prefill_verified": true,
+      "preserved_prefix": "I will inspect the image carefully.",
+      "recovery_cue": "\nLet me recheck the evidence. Recheck the visible boundaries before making an inference.\n",
+      "assistant_prefill": "I will inspect the image carefully.\nLet me recheck the evidence. Recheck the visible boundaries before making an inference.\n",
+      "suffix": "The image shows a normal brain scan with no obvious signs of pathology. There is no obvious grey-white matter differentiation.",
+      "complete_response": "I will inspect the image carefully.\nLet me recheck the evidence. Recheck the visible boundaries before making an inference.\nThe image shows a normal brain scan with no obvious signs of pathology. There is no obvious grey-white matter differentiation.",
+      "retained_prefix_unchanged": true
+    }
+  },
+  "three_case_driver_check": {
+    "auditor_kind": "scripted local HTTP fixture; no model judgement",
+    "run": {
+      "pilot_id": "training-repair-pilot-v1",
+      "started_utc": "20261108T034700Z",
+      "role": "train",
+      "settings": {
+        "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+        "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+        "seed": 7,
+        "cpu_threads": 4,
+        "image_edge": 512,
+        "max_new_tokens": 16,
+        "learning_rate": 0.001,
+        "timeout_seconds": 1200,
+        "memory_limit_gib": 10,
+        "minimum_available_gib": 6
+      },
+      "config": {
+        "pilot_id": "training-repair-pilot-v1",
+        "selection": {
+          "vqa_rad": 2,
+          "slake": 1
+        },
+        "rollout_max_new_tokens": 48,
+        "suffix_max_new_tokens": 24,
+        "readout_max_new_tokens": 16,
+        "auditor_base_url": "http://127.0.0.1:36987/v1",
+        "auditor_model": "qwen2.5vl:3b",
+        "auditor_max_tokens": 512,
+        "auditor_timeout_seconds": 180,
+        "worker_timeout_seconds": 300
+      },
+      "selected_ids": [
+        "vqa_rad:train:000201",
+        "vqa_rad:train:001467",
+        "slake:train:4022"
+      ],
+      "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+      "sources": {
+        "vqa_rad": {
+          "repo_id": "flaviagiammarino/vqa-rad",
+          "revision": "bcf91e7654fb9d51c8ab6a5b82cacf3fafd2fae9",
+          "files": {
+            "train": {
+              "path": "data/train-00000-of-00001-eb8844602202be60.parquet",
+              "sha256": "b07c3441467b99060e5ec412ddd05be06f86f01f23bfa3debfbbcab47874a06e",
+              "size_bytes": 24183983
+            },
+            "test": {
+              "path": "data/test-00000-of-00001-e5bc3d208bb4deeb.parquet",
+              "sha256": "eb520bdab1116dd4f420120da19049d2315389fa126d031f65ec42e153264ea7",
+              "size_bytes": 10312735
+            }
+          }
+        },
+        "slake": {
+          "repo_id": "BoKelvin/SLAKE",
+          "revision": "a9083ce6c34ac3ffb17671a605962924d8a8f9e9",
+          "files": {
+            "train": {
+              "path": "train.json",
+              "sha256": "7a9fb81f9d7bb145c3d7e9bc8d3b9016ba18b6539ea5031a53bae8fd3cd991c3",
+              "size_bytes": 2964571
+            },
+            "validation": {
+              "path": "validation.json",
+              "sha256": "32b016440b0c3be11056a78a18eeab46333268407fbb6e6b32f9f4c2debc50f6",
+              "size_bytes": 639139
+            },
+            "test": {
+              "path": "test.json",
+              "sha256": "6be8f7b4c5a46cdbc713a5210a25b6ed5aa1fd1574c83cefb4f998131f17c2c3",
+              "size_bytes": 635829
+            },
+            "images": {
+              "path": "imgs.zip",
+              "sha256": "44eb7d9214e1ac5b7946e237b669401866df9114fd9a3618c5a84fbffcded0b0",
+              "size_bytes": 212343373
+            }
+          }
+        }
+      },
+      "source_sha256": {
+        "src/__init__.py": "d94b3a1885bab1da09d5bea2959bab977337735b3fb19a76c7305298ff6e47b0",
+        "src/answer_diagnostic.py": "ddd76eaf097177a9a088db52a84c5264744d89beac342b571a3e89bbda09ff78",
+        "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+        "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+        "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+        "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+        "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+        "src/repair_audit.py": "c152a894d7f46dca24aa73c2d44e3d6f1ce7e33bd9742d7f00957eb44fbcc608",
+        "src/repair_model.py": "40a9db216eb9d8ee991a7e8f00ae9925ca695a7212c08e9d8c471c761e4092ab",
+        "src/repair_pilot.py": "02464530abaffac6002d4895241113193baba7688e7c101d7c2fe04920c42fef",
+        "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+        "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+        "evaluate.py": "2f5230d56bc811baed7e47ca2304b74a912e6a622868fb929429f9d9ae121d3d"
+      },
+      "reasoning_instruction": "Please reason step by step, and put your final answer within \\boxed{}.",
+      "readout_instruction": "Answer the original question directly using a word, number, or short phrase. Return only the answer, without reasoning, labels, or formatting.",
+      "verifier_id": "plain-whole-answer-em-v1",
+      "limitations": [
+        "Heuristic sentence spans, not independently validated semantic steps",
+        "Separate primary-model answer readout is a training-only adaptation, not the paper's answer parser",
+        "Local Qwen auditor replaces the paper's auditor; medical quality is unverified",
+        "One suffix attempt per failed rollout; no model updates or training-target export",
+        "Full learnability screening, twenty error subtypes, feedback navigation and SFT admission are deferred"
+      ]
+    },
+    "summary": {
+      "status": "complete",
+      "purpose": "training-only repair feasibility; not benchmark evaluation",
+      "output_folder": "outputs/20261108T034700Z_repair_pilot_c000f7",
+      "selected_count": 3,
+      "recorded_count": 3,
+      "outcomes": {
+        "initial_answer_match": 1,
+        "auditor_unresolved": 2
+      },
+      "initial_answer_match_count": 1,
+      "candidate_answer_match_count": 0,
+      "preliminary_candidate_count": 0,
+      "audit_calls": 2,
+      "review_calls": 0,
+      "validated_audit_count": 2,
+      "auditor_path_exercised": true,
+      "continuation_path_exercised": false,
+      "training_examples_exported": 0,
+      "optimizer_steps": 0,
+      "adapters_created": false,
+      "medical_validity": "not_independently_verified",
+      "full_medEvo_admission": "not_implemented_in_pilot",
+      "cases": [
+        {
+          "id": "vqa_rad:train:000201",
+          "outcome": "initial_answer_match"
+        },
+        {
+          "id": "vqa_rad:train:001467",
+          "outcome": "auditor_unresolved"
+        },
+        {
+          "id": "slake:train:4022",
+          "outcome": "auditor_unresolved"
+        }
+      ],
+      "worker": {
+        "worker_exit_code": 0,
+        "limit_reached": null,
+        "elapsed_seconds": 42.665,
+        "peak_process_tree_rss_bytes": null,
+        "peak_process_tree_rss_gib": null,
+        "memory_measurement_available": false,
+        "memory_sampling_seconds": 0.2,
+        "memory_measurement_plausible": false,
+        "measurement_scope": "Python worker process tree; excludes the external Ollama service",
+        "warning": "RAM sample requires target-PC verification; do not report as validated peak"
+      }
+    },
+    "cases": [
+      {
+        "case": 1,
+        "evidence": {
+          "initial_readout.json": {
+            "raw_response": " yes",
+            "generated_tokens": 2,
+            "generation_seconds": 2.005,
+            "hit_token_limit": false,
+            "input_token_count": 187,
+            "input_ids_sha256": "a2be8a9e0c4350fb906dd87d21452c13ed086e2850921a35d8e898c2a486dd3f",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false
+          },
+          "verification.json": {
+            "scoring_id": "plain-whole-answer-em-v1",
+            "reference": "yes",
+            "initial_answer_match": true,
+            "candidate_answer_match": null,
+            "scope": "training-only separate answer-readout verification; not final evaluation"
+          },
+          "initial_reasoning.json": {
+            "raw_response": " Yes, there is grey-white matter differentiation in the brain. The grey matter is the outer layer of the brain, and it contains the neurons and glial cells that support and protect the brain. The white matter is the inner layer of",
+            "generated_tokens": 48,
+            "generation_seconds": 5.977,
+            "hit_token_limit": true,
+            "input_token_count": 101,
+            "input_ids_sha256": "98519fedbb26e82703be1e15e3be51b8b9f808021210e709871cc3ba45d99374",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false,
+            "token_entropies_nats": [
+              2.562448263168335,
+              0.35683974623680115,
+              0.9886674880981445,
+              0.23813794553279877,
+              1.9158713817596436,
+              0.20940089225769043,
+              0.0249690692871809,
+              0.05215112492442131,
+              0.02190093882381916,
+              1.674023985862732,
+              0.7655001282691956,
+              3.0971577167510986,
+              2.226085662841797,
+              2.3535046577453613,
+              3.918962001800537,
+              0.35169848799705505,
+              1.845985770225525,
+              2.4666905403137207,
+              2.263568162918091,
+              1.5792603492736816,
+              0.873879075050354,
+              0.5400911569595337,
+              0.4288492798805237,
+              1.2978702783584595,
+              2.3210346698760986,
+              0.9153258204460144,
+              1.3613201379776,
+              1.5244024991989136,
+              2.645498275756836,
+              0.9562119245529175,
+              2.4699172973632812,
+              0.21267344057559967,
+              0.029545476660132408,
+              0.9737957119941711,
+              2.442887783050537,
+              1.5860228538513184,
+              2.071631908416748,
+              0.9382115602493286,
+              1.1071120500564575,
+              1.1945521831512451,
+              0.5124514102935791,
+              0.16395601630210876,
+              0.0020625325851142406,
+              0.8131985068321228,
+              0.22535964846611023,
+              0.21664461493492126,
+              0.17785532772541046,
+              0.5340338945388794
+            ],
+            "entropy": {
+              "status": "measured",
+              "lambda": 0.5,
+              "history": 3,
+              "steps": [
+                {
+                  "step": 1,
+                  "visible_tokens": 13,
+                  "mean_nats": 1.0871657187548966,
+                  "q90_nats": 2.4951757431030277,
+                  "uncertainty": 1.7911707309289622,
+                  "surge": 0.0,
+                  "normalized_uncertainty": 0.8704632055372873,
+                  "normalized_surge": 0.8783427505929569
+                },
+                {
+                  "step": 2,
+                  "visible_tokens": 27,
+                  "mean_nats": 1.5063149390259274,
+                  "q90_nats": 2.467981243133545,
+                  "uncertainty": 1.9871480910797361,
+                  "surge": 0.19597736015077394,
+                  "normalized_uncertainty": 1.0,
+                  "normalized_surge": 1.0
+                },
+                {
+                  "step": 3,
+                  "visible_tokens": 8,
+                  "mean_nats": 0.3306952439597808,
+                  "q90_nats": 0.6177832782268524,
+                  "uncertainty": 0.4742392610933166,
+                  "surge": -1.4149201499110324,
+                  "normalized_uncertainty": 0.0,
+                  "normalized_surge": 0.0
+                }
+              ],
+              "anchor": 2,
+              "window": [
+                1,
+                2,
+                3
+              ],
+              "alignment_policy": "visible token assigned by last decoded character; zero-length special tokens excluded"
+            }
+          },
+          "reasoning_steps.json": [
+            {
+              "step": 1,
+              "start": 0,
+              "end": 62,
+              "text": " Yes, there is grey-white matter differentiation in the brain."
+            },
+            {
+              "step": 2,
+              "start": 62,
+              "end": 191,
+              "text": " The grey matter is the outer layer of the brain, and it contains the neurons and glial cells that support and protect the brain."
+            },
+            {
+              "step": 3,
+              "start": 191,
+              "end": 230,
+              "text": " The white matter is the inner layer of"
+            }
+          ],
+          "case.json": {
+            "id": "vqa_rad:train:000201",
+            "dataset": "vqa_rad",
+            "role": "train",
+            "outcome": "initial_answer_match",
+            "audit_calls": 0,
+            "review_calls": 0,
+            "optimizer_steps": 0,
+            "training_examples_exported": 0,
+            "clinical_boundary_status": "not_independently_verified",
+            "learnability_gate": {
+              "status": "not_implemented_in_this_pilot",
+              "ratio": null,
+              "gap": null
+            },
+            "initial_answer_match": true,
+            "training_admission": "not_exported_reasoning_quality_unreviewed"
+          }
+        },
+        "request_contracts": [
+          {
+            "saved_file": "initial_readout_request.json",
+            "sha256": "89e768f3d4f5f6d74ab54664d876c7bf2149ed1c4eb32e6509a13fac893d529f",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256",
+              "assistant_reasoning",
+              "readout_instruction"
+            ]
+          },
+          {
+            "saved_file": "initial_request.json",
+            "sha256": "99469798a55c6f4ca4a4bf5db2363a413ca0188e49fe1790df7b7f4b2205a7c1",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256"
+            ]
+          }
+        ]
+      },
+      {
+        "case": 2,
+        "evidence": {
+          "initial_readout.json": {
+            "raw_response": " T2-weighted MRI scan",
+            "generated_tokens": 7,
+            "generation_seconds": 2.516,
+            "hit_token_limit": false,
+            "input_token_count": 187,
+            "input_ids_sha256": "8f0e3b65c884d1167b7917875b6b8aaf8d53c919d19a9fc5c911bc49fb6ecddd",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false
+          },
+          "verification.json": {
+            "scoring_id": "plain-whole-answer-em-v1",
+            "reference": "mr flair",
+            "initial_answer_match": false,
+            "candidate_answer_match": null,
+            "scope": "training-only separate answer-readout verification; not final evaluation"
+          },
+          "initial_reasoning.json": {
+            "raw_response": " The image modality is a T2-weighted MRI scan. This is indicated by the presence of the T2 signal in the image, which is a characteristic feature of T2-weighted MRI scans. The T2 signal is a reflection of",
+            "generated_tokens": 48,
+            "generation_seconds": 6.165,
+            "hit_token_limit": true,
+            "input_token_count": 101,
+            "input_ids_sha256": "ca6946d1aaf3d236f53ddabb2d722c02ac64b59660128d387f7b968ce63427af",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false,
+            "token_entropies_nats": [
+              1.0284219980239868,
+              0.6064003109931946,
+              0.5130946636199951,
+              1.1851716041564941,
+              1.9773578643798828,
+              3.571059226989746,
+              0.5495665669441223,
+              1.3881882429122925,
+              0.08594268560409546,
+              1.5207496881484985,
+              1.4776554107666016,
+              0.5761536359786987,
+              1.6457204818725586,
+              0.6953886151313782,
+              1.5777614116668701,
+              0.20983624458312988,
+              0.10036608576774597,
+              4.954085826873779,
+              0.011481101624667645,
+              3.5519349575042725,
+              3.78299617767334,
+              0.17112566530704498,
+              3.737799882888794,
+              3.4631266593933105,
+              0.27609458565711975,
+              3.317107915878296,
+              1.3189470767974854,
+              0.4698910713195801,
+              1.6247923374176025,
+              2.2105772495269775,
+              1.635040283203125,
+              0.8611147999763489,
+              0.1607937216758728,
+              1.379111886024475,
+              0.05468078702688217,
+              0.9751690626144409,
+              0.06492197513580322,
+              1.6647651195526123,
+              1.7385895252227783,
+              0.6803919672966003,
+              2.275754690170288,
+              3.3130228519439697,
+              0.1440356820821762,
+              0.36364465951919556,
+              1.5398409366607666,
+              3.653437852859497,
+              4.119093894958496,
+              1.474696397781372
+            ],
+            "entropy": {
+              "status": "measured",
+              "lambda": 0.5,
+              "history": 3,
+              "steps": [
+                {
+                  "step": 1,
+                  "visible_tokens": 12,
+                  "mean_nats": 1.2066468248764675,
+                  "q90_nats": 1.9316970467567445,
+                  "uncertainty": 1.5691719358166059,
+                  "surge": 0.0,
+                  "normalized_uncertainty": 0.0,
+                  "normalized_surge": 0.0
+                },
+                {
+                  "step": 2,
+                  "visible_tokens": 28,
+                  "mean_nats": 1.5119147312361747,
+                  "q90_nats": 3.607694435119629,
+                  "uncertainty": 2.559804583177902,
+                  "surge": 0.9906326473612963,
+                  "normalized_uncertainty": 0.7164916126501365,
+                  "normalized_surge": 1.0
+                },
+                {
+                  "step": 3,
+                  "visible_tokens": 8,
+                  "mean_nats": 2.11044087074697,
+                  "q90_nats": 3.793134665489197,
+                  "uncertainty": 2.9517877681180833,
+                  "surge": 0.8872995086208295,
+                  "normalized_uncertainty": 1.0,
+                  "normalized_surge": 0.8956897503673934
+                }
+              ],
+              "anchor": 3,
+              "window": [
+                2,
+                3
+              ],
+              "alignment_policy": "visible token assigned by last decoded character; zero-length special tokens excluded"
+            }
+          },
+          "audit_response.json": {
+            "response_text": "{\"choices\": [{\"message\": {\"content\": \"{\\\"action\\\": \\\"unresolved\\\", \\\"first_error_step\\\": 0, \\\"error_family\\\": \\\"unresolved\\\", \\\"prefix_supported\\\": false, \\\"hint\\\": \\\"\\\", \\\"evidence\\\": \\\"Scripted transport fixture; no medical judgement is made.\\\"}\"}}]}",
+            "roundtrip_seconds": 0.006
+          },
+          "reasoning_steps.json": [
+            {
+              "step": 1,
+              "start": 0,
+              "end": 46,
+              "text": " The image modality is a T2-weighted MRI scan."
+            },
+            {
+              "step": 2,
+              "start": 46,
+              "end": 171,
+              "text": " This is indicated by the presence of the T2 signal in the image, which is a characteristic feature of T2-weighted MRI scans."
+            },
+            {
+              "step": 3,
+              "start": 171,
+              "end": 204,
+              "text": " The T2 signal is a reflection of"
+            }
+          ],
+          "audit.json": {
+            "action": "unresolved",
+            "first_error_step": 0,
+            "error_family": "unresolved",
+            "prefix_supported": false,
+            "hint": "",
+            "evidence": "Scripted transport fixture; no medical judgement is made."
+          },
+          "case.json": {
+            "id": "vqa_rad:train:001467",
+            "dataset": "vqa_rad",
+            "role": "train",
+            "outcome": "auditor_unresolved",
+            "audit_calls": 1,
+            "review_calls": 0,
+            "optimizer_steps": 0,
+            "training_examples_exported": 0,
+            "clinical_boundary_status": "not_independently_verified",
+            "learnability_gate": {
+              "status": "not_implemented_in_this_pilot",
+              "ratio": null,
+              "gap": null
+            },
+            "initial_answer_match": false,
+            "audit_structure_valid": true,
+            "auditor_action": "unresolved"
+          }
+        },
+        "request_contracts": [
+          {
+            "saved_file": "initial_readout_request.json",
+            "sha256": "012c1379775099cb15ccc5ef1e737c17152934ef2274913cc9a68832696c0cb0",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256",
+              "assistant_reasoning",
+              "readout_instruction"
+            ]
+          },
+          {
+            "saved_file": "initial_request.json",
+            "sha256": "cf2978dc8249085ce2800f2b6dc0355ee305819513f196bbbdf658e494708d0d",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256"
+            ]
+          },
+          {
+            "saved_file": "audit_request.json",
+            "sha256": "f9fdf01bd8bf33b0498ec93af639338dc98e9ccced38eac8c1880b5d91d09df0",
+            "top_level_fields": [
+              "model",
+              "temperature",
+              "seed",
+              "max_tokens",
+              "response_format",
+              "messages"
+            ],
+            "auditor_visible_text_fields": [
+              "question",
+              "response",
+              "steps",
+              "entropy_proposal"
+            ],
+            "image_attached": true,
+            "image_body_omitted_from_package": true,
+            "reference_field_present": false
+          }
+        ]
+      },
+      {
+        "case": 3,
+        "evidence": {
+          "initial_readout.json": {
+            "raw_response": " no",
+            "generated_tokens": 2,
+            "generation_seconds": 2.094,
+            "hit_token_limit": false,
+            "input_token_count": 186,
+            "input_ids_sha256": "695cd1581f83e4998ffa46646de64fc502219131d42b3a9b8c1cc5ffa5206fcc",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false
+          },
+          "verification.json": {
+            "scoring_id": "plain-whole-answer-em-v1",
+            "reference": "Yes",
+            "initial_answer_match": false,
+            "candidate_answer_match": null,
+            "scope": "training-only separate answer-readout verification; not final evaluation"
+          },
+          "initial_reasoning.json": {
+            "raw_response": " The picture does not contain a spinal cord. Spinal cord is a part of the central nervous system (CNS) and is located in the lower back. It is a long, thin, and white column of tissue that runs down the center",
+            "generated_tokens": 48,
+            "generation_seconds": 6.143,
+            "hit_token_limit": true,
+            "input_token_count": 100,
+            "input_ids_sha256": "2bb808b71f3c2154d820b0497fa27d2e2ec029f37a644ecdfecf726f502a082d",
+            "input_prefix_unchanged": true,
+            "assistant_prefill_verified": false,
+            "token_entropies_nats": [
+              1.7075471878051758,
+              2.5384628772735596,
+              1.5164830684661865,
+              0.32313305139541626,
+              1.1118428707122803,
+              1.096240758895874,
+              0.5963618755340576,
+              0.01824134588241577,
+              1.1167027950286865,
+              1.9327887296676636,
+              0.5663579702377319,
+              3.0159494876861572,
+              2.705556631088257,
+              3.627943277359009,
+              0.05515317618846893,
+              0.35601377487182617,
+              1.959991455078125,
+              0.02272217720746994,
+              0.0028032006230205297,
+              1.8418971300125122,
+              0.19469749927520752,
+              0.002265743911266327,
+              0.7409620881080627,
+              1.462571144104004,
+              1.7015440464019775,
+              2.447096824645996,
+              1.210464596748352,
+              0.07094473391771317,
+              2.7526516914367676,
+              1.8824180364608765,
+              2.235712766647339,
+              2.436292886734009,
+              1.5672584772109985,
+              3.1069536209106445,
+              3.6283228397369385,
+              0.34203869104385376,
+              2.6484267711639404,
+              1.9033069610595703,
+              2.6074211597442627,
+              3.2496538162231445,
+              2.908386707305908,
+              1.6247137784957886,
+              2.065519094467163,
+              0.8406077027320862,
+              1.4621243476867676,
+              1.8471087217330933,
+              0.2112773209810257,
+              0.6133251190185547
+            ],
+            "entropy": {
+              "status": "measured",
+              "lambda": 0.5,
+              "history": 3,
+              "steps": [
+                {
+                  "step": 1,
+                  "visible_tokens": 9,
+                  "mean_nats": 1.1138906478881836,
+                  "q90_nats": 1.8737303256988527,
+                  "uncertainty": 1.4938104867935182,
+                  "surge": 0.0,
+                  "normalized_uncertainty": 0.0,
+                  "normalized_surge": 0.0
+                },
+                {
+                  "step": 2,
+                  "visible_tokens": 22,
+                  "mean_nats": 1.3994775537126274,
+                  "q90_nats": 2.7479421854019166,
+                  "uncertainty": 2.073709869557272,
+                  "surge": 0.5798993827637537,
+                  "normalized_uncertainty": 0.5467448650229966,
+                  "normalized_surge": 0.7524416764323332
+                },
+                {
+                  "step": 3,
+                  "visible_tokens": 17,
+                  "mean_nats": 1.9448669421322204,
+                  "q90_nats": 3.164033699035645,
+                  "uncertainty": 2.554450320583933,
+                  "surge": 0.7706901424085377,
+                  "normalized_uncertainty": 1.0,
+                  "normalized_surge": 1.0
+                }
+              ],
+              "anchor": 3,
+              "window": [
+                2,
+                3
+              ],
+              "alignment_policy": "visible token assigned by last decoded character; zero-length special tokens excluded"
+            }
+          },
+          "audit_response.json": {
+            "response_text": "{\"choices\": [{\"message\": {\"content\": \"{\\\"action\\\": \\\"unresolved\\\", \\\"first_error_step\\\": 0, \\\"error_family\\\": \\\"unresolved\\\", \\\"prefix_supported\\\": false, \\\"hint\\\": \\\"\\\", \\\"evidence\\\": \\\"Scripted transport fixture; no medical judgement is made.\\\"}\"}}]}",
+            "roundtrip_seconds": 0.003
+          },
+          "reasoning_steps.json": [
+            {
+              "step": 1,
+              "start": 0,
+              "end": 44,
+              "text": " The picture does not contain a spinal cord."
+            },
+            {
+              "step": 2,
+              "start": 44,
+              "end": 136,
+              "text": " Spinal cord is a part of the central nervous system (CNS) and is located in the lower back."
+            },
+            {
+              "step": 3,
+              "start": 136,
+              "end": 209,
+              "text": " It is a long, thin, and white column of tissue that runs down the center"
+            }
+          ],
+          "audit.json": {
+            "action": "unresolved",
+            "first_error_step": 0,
+            "error_family": "unresolved",
+            "prefix_supported": false,
+            "hint": "",
+            "evidence": "Scripted transport fixture; no medical judgement is made."
+          },
+          "case.json": {
+            "id": "slake:train:4022",
+            "dataset": "slake",
+            "role": "train",
+            "outcome": "auditor_unresolved",
+            "audit_calls": 1,
+            "review_calls": 0,
+            "optimizer_steps": 0,
+            "training_examples_exported": 0,
+            "clinical_boundary_status": "not_independently_verified",
+            "learnability_gate": {
+              "status": "not_implemented_in_this_pilot",
+              "ratio": null,
+              "gap": null
+            },
+            "initial_answer_match": false,
+            "audit_structure_valid": true,
+            "auditor_action": "unresolved"
+          }
+        },
+        "request_contracts": [
+          {
+            "saved_file": "initial_readout_request.json",
+            "sha256": "95a0c36e3ac1663324d056541b19e58330c0af02205c3b4836bf139134c2520d",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256",
+              "assistant_reasoning",
+              "readout_instruction"
+            ]
+          },
+          {
+            "saved_file": "initial_request.json",
+            "sha256": "579b11882621f040b419024689492542cf170aba21b9ea383591ffd1a96a09b2",
+            "top_level_fields": [
+              "question",
+              "reasoning_instruction",
+              "image_sha256"
+            ]
+          },
+          {
+            "saved_file": "audit_request.json",
+            "sha256": "aa58a096199b363d8608d0e727f745f5cb5168f58a6f7bf390effa9c332ddae1",
+            "top_level_fields": [
+              "model",
+              "temperature",
+              "seed",
+              "max_tokens",
+              "response_format",
+              "messages"
+            ],
+            "auditor_visible_text_fields": [
+              "question",
+              "response",
+              "steps",
+              "entropy_proposal"
+            ],
+            "image_attached": true,
+            "image_body_omitted_from_package": true,
+            "reference_field_present": false
+          }
+        ]
+      }
+    ]
+  },
+  "live_qwen_auditor_evaluated": false,
+  "model_source_unchanged": true,
+  "normal_boxed_scorer_unchanged": true,
+  "medical_training_performed": false,
+  "source_sha256": {
+    "src/__init__.py": "d94b3a1885bab1da09d5bea2959bab977337735b3fb19a76c7305298ff6e47b0",
+    "src/answer_diagnostic.py": "ddd76eaf097177a9a088db52a84c5264744d89beac342b571a3e89bbda09ff78",
+    "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+    "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+    "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+    "src/repair_audit.py": "c152a894d7f46dca24aa73c2d44e3d6f1ce7e33bd9742d7f00957eb44fbcc608",
+    "src/repair_model.py": "40a9db216eb9d8ee991a7e8f00ae9925ca695a7212c08e9d8c471c761e4092ab",
+    "src/repair_pilot.py": "02464530abaffac6002d4895241113193baba7688e7c101d7c2fe04920c42fef",
+    "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "evaluate.py": "2f5230d56bc811baed7e47ca2304b74a912e6a622868fb929429f9d9ae121d3d"
+  }
+}

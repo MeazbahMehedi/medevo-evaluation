@@ -1,0 +1,474 @@
+{
+  "prepared_date_utc": "2026-11-08",
+  "scope": "Phase 2 development checks; not final medical benchmark evaluation",
+  "test_suite": {
+    "test_count": 38,
+    "status": "passed",
+    "output_file": "test_results.txt"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "cpu_count": 9,
+    "free_disk_gib": 54.36,
+    "packages": {
+      "torch": "2.15.0+cpu",
+      "torchvision": "0.29.2+cpu",
+      "transformers": "5.22.2",
+      "peft": "0.21.2",
+      "accelerate": "1.15.0",
+      "psutil": "7.2.2",
+      "Pillow": "13.0.0",
+      "huggingface-hub": "2.4.0",
+      "num2words": "0.5.14",
+      "socksio": "1.0.0",
+      "pyarrow": "26.0.1"
+    },
+    "git_installed": true,
+    "github_cli_installed": false,
+    "total_ram_gib": 9.73,
+    "available_ram_gib": 8.52
+  },
+  "data_preparation": {
+    "bundle_version": 1,
+    "image_hash_protocol": "rgb-dimensions-v1",
+    "sources": {
+      "vqa_rad": {
+        "repo_id": "flaviagiammarino/vqa-rad",
+        "revision": "bcf91e7654fb9d51c8ab6a5b82cacf3fafd2fae9",
+        "files": {
+          "train": {
+            "path": "data/train-00000-of-00001-eb8844602202be60.parquet",
+            "sha256": "b07c3441467b99060e5ec412ddd05be06f86f01f23bfa3debfbbcab47874a06e",
+            "size_bytes": 24183983
+          },
+          "test": {
+            "path": "data/test-00000-of-00001-e5bc3d208bb4deeb.parquet",
+            "sha256": "eb520bdab1116dd4f420120da19049d2315389fa126d031f65ec42e153264ea7",
+            "size_bytes": 10312735
+          }
+        }
+      },
+      "slake": {
+        "repo_id": "BoKelvin/SLAKE",
+        "revision": "a9083ce6c34ac3ffb17671a605962924d8a8f9e9",
+        "files": {
+          "train": {
+            "path": "train.json",
+            "sha256": "7a9fb81f9d7bb145c3d7e9bc8d3b9016ba18b6539ea5031a53bae8fd3cd991c3",
+            "size_bytes": 2964571
+          },
+          "validation": {
+            "path": "validation.json",
+            "sha256": "32b016440b0c3be11056a78a18eeab46333268407fbb6e6b32f9f4c2debc50f6",
+            "size_bytes": 639139
+          },
+          "test": {
+            "path": "test.json",
+            "sha256": "6be8f7b4c5a46cdbc713a5210a25b6ed5aa1fd1574c83cefb4f998131f17c2c3",
+            "size_bytes": 635829
+          },
+          "images": {
+            "path": "imgs.zip",
+            "sha256": "44eb7d9214e1ac5b7946e237b669401866df9114fd9a3618c5a84fbffcded0b0",
+            "size_bytes": 212343373
+          }
+        }
+      }
+    },
+    "protocol": {
+      "protocol_id": "medical-vqa-cpu-v1",
+      "seed": 7,
+      "rad_feedback_fraction": 0.1,
+      "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+      "max_new_tokens": 128,
+      "evaluation_timeout_seconds": 28800,
+      "scoring_id": "boxed-strict-em-v1",
+      "training_policy": "exclude_exact_test_and_feedback_images"
+    },
+    "counts": {
+      "train": 5566,
+      "feedback": 1132,
+      "test": 1512
+    },
+    "counts_by_dataset_role": {
+      "slake:test": 1061,
+      "slake:train": 4911,
+      "slake:feedback": 1053,
+      "vqa_rad:test": 451,
+      "vqa_rad:train": 655,
+      "vqa_rad:feedback": 79
+    },
+    "source_english_rows": 9276,
+    "exclusion_reasons": {
+      "missing_question_or_reference": 1,
+      "non_english": 6995,
+      "duplicate_adaptation_question": 7,
+      "test_image_overlap": 1059
+    },
+    "manifest_sha256": {
+      "train": "a44e942a08dc7cb95702bef88b85538e14493bbb62c7ed0151a18513a8135259",
+      "feedback": "f26f74c6a23ae518d56d52d8f3cb32c6a4a4fcf40d6ff3e4a26d41162eae3224",
+      "test": "753f4bbb2cf9ff7fd9f62e34bd80bf6fb4c625aee0c64f42da54ccb2faa356bc"
+    },
+    "exclusions_sha256": "429a32fb983e147e6f2a1b471ad53714f84fd69ac13564f906ba244588b962de",
+    "limitations": [
+      "Exact decoded-image separation only; no patient-ID or near-duplicate guarantee",
+      "Adaptation pool differs from the source training partitions",
+      "VQA-RAD is a pinned processed distribution; SLAKE uses its pinned author distribution"
+    ]
+  },
+  "repeated_preparation_identical": true,
+  "data_bundle_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+  "development_feedback_checks": [
+    {
+      "run_id": "20261108T022022Z_vqa_rad_feedback_8487e2",
+      "signature": {
+        "benchmark": "vqa_rad",
+        "role": "feedback",
+        "limit": 1,
+        "scope": "subset",
+        "selected_ids": [
+          "vqa_rad:train:001713"
+        ],
+        "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+        "settings": {
+          "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+          "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+          "seed": 7,
+          "cpu_threads": 4,
+          "image_edge": 512,
+          "max_new_tokens": 16,
+          "learning_rate": 0.001,
+          "timeout_seconds": 1200,
+          "memory_limit_gib": 10,
+          "minimum_available_gib": 6
+        },
+        "protocol": {
+          "protocol_id": "medical-vqa-cpu-v1",
+          "seed": 7,
+          "rad_feedback_fraction": 0.1,
+          "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+          "max_new_tokens": 128,
+          "evaluation_timeout_seconds": 28800,
+          "scoring_id": "boxed-strict-em-v1",
+          "training_policy": "exclude_exact_test_and_feedback_images"
+        },
+        "code_sha256": {
+          "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+          "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+          "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+          "src/evaluation.py": "0eb984d21e04be7dbe706ad8223bc2c142169af074040b729936e6242d9a0dc5",
+          "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+          "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+          "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+          "evaluate.py": "11fcbd36d8cba2d8826079748923c34ab12e6097d6e5badb953113367b797609"
+        },
+        "packages": {
+          "torch": "2.15.0+cpu",
+          "torchvision": "0.29.2+cpu",
+          "transformers": "5.22.2",
+          "peft": "0.21.2",
+          "accelerate": "1.15.0",
+          "psutil": "7.2.2",
+          "Pillow": "13.0.0",
+          "huggingface-hub": "2.4.0",
+          "num2words": "0.5.14",
+          "socksio": "1.0.0",
+          "pyarrow": "26.0.1"
+        },
+        "python": "3.12.14"
+      },
+      "metrics": {
+        "benchmark": "vqa_rad",
+        "role": "feedback",
+        "scope": "subset",
+        "scoring_id": "boxed-strict-em-v1",
+        "scorer_sha256": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+        "summary": {
+          "selected_count": 1,
+          "generated_count": 1,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 0,
+          "token_limit_count": 0,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 0.0,
+          "normalized_em_accuracy_pct": 0.0,
+          "mean_token_f1_pct": 0.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0
+          },
+          "generation_seconds": 12.039
+        },
+        "by_answer_type": {
+          "open": {
+            "selected_count": 0,
+            "generated_count": 0,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 0,
+            "token_limit_count": 0,
+            "coverage_pct": null,
+            "status": "incomplete",
+            "strict_em_accuracy_pct": null,
+            "normalized_em_accuracy_pct": null,
+            "mean_token_f1_pct": null,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": null,
+              "normalized_em_accuracy_pct": null,
+              "mean_token_f1_pct": null
+            },
+            "generation_seconds": 0
+          },
+          "closed": {
+            "selected_count": 1,
+            "generated_count": 1,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 0,
+            "token_limit_count": 0,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 12.039
+          }
+        }
+      },
+      "scored_examples": [
+        {
+          "id": "vqa_rad:train:001713",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "no",
+          "status": "generated",
+          "raw_response": "The image does not provide enough detail to determine if there is a subarachnoid bleed. However, it is important to note that a subarachnoid hemorrhage is a medical emergency that requires immediate attention. If the image shows a subarachnoid hemorrhage, it would be necessary to seek medical attention immediately.\n\nTherefore, the answer to the question is:\n\n\\boxed{Subarachnoid hemorrhage}",
+          "generated_tokens": 91,
+          "generation_seconds": 12.039,
+          "hit_token_limit": false,
+          "parsed_answer": "Subarachnoid hemorrhage",
+          "parse_failed": false,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ],
+      "resource_attempts": [
+        {
+          "worker_exit_code": 0,
+          "limit_reached": null,
+          "elapsed_seconds": 31.388,
+          "peak_process_tree_rss_bytes": 462848,
+          "peak_process_tree_rss_gib": 0.000431,
+          "memory_measurement_available": true,
+          "memory_sampling_seconds": 0.2,
+          "attempt_id": "20261108T022022Z_d44401",
+          "measurement_scope": "current worker attempt; not cumulative",
+          "memory_measurement_plausible": false,
+          "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+        }
+      ]
+    },
+    {
+      "run_id": "20261108T022021Z_slake_feedback_c99bcf",
+      "signature": {
+        "benchmark": "slake",
+        "role": "feedback",
+        "limit": 1,
+        "scope": "subset",
+        "selected_ids": [
+          "slake:validation:10615"
+        ],
+        "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+        "settings": {
+          "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+          "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+          "seed": 7,
+          "cpu_threads": 4,
+          "image_edge": 512,
+          "max_new_tokens": 16,
+          "learning_rate": 0.001,
+          "timeout_seconds": 1200,
+          "memory_limit_gib": 10,
+          "minimum_available_gib": 6
+        },
+        "protocol": {
+          "protocol_id": "medical-vqa-cpu-v1",
+          "seed": 7,
+          "rad_feedback_fraction": 0.1,
+          "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+          "max_new_tokens": 128,
+          "evaluation_timeout_seconds": 28800,
+          "scoring_id": "boxed-strict-em-v1",
+          "training_policy": "exclude_exact_test_and_feedback_images"
+        },
+        "code_sha256": {
+          "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+          "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+          "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+          "src/evaluation.py": "0eb984d21e04be7dbe706ad8223bc2c142169af074040b729936e6242d9a0dc5",
+          "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+          "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+          "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+          "evaluate.py": "11fcbd36d8cba2d8826079748923c34ab12e6097d6e5badb953113367b797609"
+        },
+        "packages": {
+          "torch": "2.15.0+cpu",
+          "torchvision": "0.29.2+cpu",
+          "transformers": "5.22.2",
+          "peft": "0.21.2",
+          "accelerate": "1.15.0",
+          "psutil": "7.2.2",
+          "Pillow": "13.0.0",
+          "huggingface-hub": "2.4.0",
+          "num2words": "0.5.14",
+          "socksio": "1.0.0",
+          "pyarrow": "26.0.1"
+        },
+        "python": "3.12.14"
+      },
+      "metrics": {
+        "benchmark": "slake",
+        "role": "feedback",
+        "scope": "subset",
+        "scoring_id": "boxed-strict-em-v1",
+        "scorer_sha256": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+        "summary": {
+          "selected_count": 1,
+          "generated_count": 1,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 1,
+          "token_limit_count": 0,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 0.0,
+          "normalized_em_accuracy_pct": 0.0,
+          "mean_token_f1_pct": 0.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0
+          },
+          "generation_seconds": 8.424
+        },
+        "by_answer_type": {
+          "open": {
+            "selected_count": 1,
+            "generated_count": 1,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 1,
+            "token_limit_count": 0,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 8.424
+          },
+          "closed": {
+            "selected_count": 0,
+            "generated_count": 0,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 0,
+            "token_limit_count": 0,
+            "coverage_pct": null,
+            "status": "incomplete",
+            "strict_em_accuracy_pct": null,
+            "normalized_em_accuracy_pct": null,
+            "mean_token_f1_pct": null,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": null,
+              "normalized_em_accuracy_pct": null,
+              "mean_token_f1_pct": null
+            },
+            "generation_seconds": 0
+          }
+        }
+      },
+      "scored_examples": [
+        {
+          "id": "slake:validation:10615",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "Brain Edema, Brain Enhancing Tumor, Brain Non-enhancing Tumor",
+          "status": "generated",
+          "raw_response": "The disease shown on the right of the brain is multiple sclerosis. Multiple sclerosis is a chronic autoimmune disease that affects the central nervous system (CNS), causing damage to the protective covering of nerve fibers (myelin) and leading to communication problems between the brain and spinal cord.",
+          "generated_tokens": 56,
+          "generation_seconds": 8.424,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ],
+      "resource_attempts": [
+        {
+          "worker_exit_code": 0,
+          "limit_reached": null,
+          "elapsed_seconds": 27.759,
+          "peak_process_tree_rss_bytes": 462848,
+          "peak_process_tree_rss_gib": 0.000431,
+          "memory_measurement_available": true,
+          "memory_sampling_seconds": 0.2,
+          "attempt_id": "20261108T022021Z_5d4da7",
+          "measurement_scope": "current worker attempt; not cumulative",
+          "memory_measurement_plausible": false,
+          "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+        },
+        {
+          "worker_exit_code": 0,
+          "limit_reached": null,
+          "elapsed_seconds": 13.62,
+          "peak_process_tree_rss_bytes": null,
+          "peak_process_tree_rss_gib": null,
+          "memory_measurement_available": false,
+          "memory_sampling_seconds": 0.2,
+          "attempt_id": "20261108T022242Z_2d74b6",
+          "measurement_scope": "current worker attempt; not cumulative",
+          "memory_measurement_plausible": false,
+          "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+        }
+      ]
+    }
+  ],
+  "resume_check": {
+    "worker_command_exit_code": 0,
+    "prediction_sha256_before": "9e05a84929e287f7f8d010114f9caba22b6de020f4e6aac690b092bc2d1eadb9",
+    "prediction_sha256_after": "9e05a84929e287f7f8d010114f9caba22b6de020f4e6aac690b092bc2d1eadb9",
+    "journal_unchanged": true,
+    "question_count": 1,
+    "resource_attempt_count": 2
+  },
+  "final_test_generation_performed": false,
+  "validated_peak_ram_available": false,
+  "source_sha256": {
+    "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+    "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "src/evaluation.py": "0eb984d21e04be7dbe706ad8223bc2c142169af074040b729936e6242d9a0dc5",
+    "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+    "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "evaluate.py": "11fcbd36d8cba2d8826079748923c34ab12e6097d6e5badb953113367b797609"
+  }
+}

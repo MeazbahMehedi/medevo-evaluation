@@ -1,0 +1,46 @@
+{
+  "date": "2026-11-08",
+  "full_suite_tests": 115,
+  "new_readout_tests": 13,
+  "full_suite_seconds": 8.394,
+  "full_suite_status": "passed",
+  "test_log_sha256": "826f3c9692f21531d75a3f350e1c555ee1faca6f83701ed2791e58de46b9a31e",
+  "scripted_supervised_cli": {
+    "status": "passed",
+    "new_readouts": 12,
+    "new_reasoning_calls": 0,
+    "new_auditor_calls": 0,
+    "training_exports": 0
+  },
+  "uploaded_archive_compatibility": {
+    "status": "passed",
+    "saved_cases": 12,
+    "model_calls": 0,
+    "prepared_bundle_validation": "not independently repeated; unavailable bundle reads were stubbed for compatibility check only"
+  },
+  "real_checkpoint_readouts_performed": false,
+  "real_checkpoint_cached_in_development_environment": false,
+  "medical_training_performed": false,
+  "final_test_evaluation_performed": false,
+  "unchanged_files": {
+    "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+    "src/repair_model.py": "40a9db216eb9d8ee991a7e8f00ae9925ca695a7212c08e9d8c471c761e4092ab",
+    "src/repair_audit.py": "b3ef660bb149b40011545d0d989e79c4d6e730c0cbba4c7f172843d89f55b9bf",
+    "src/repair_pilot.py": "da981631fbff9bd3a20cb9d1fe3b6f4af71ebeaced86200efeff548fc1092b94",
+    "src/training_collection.py": "f365fb667664800fd554a41b53f770b6642d1128b1c63030bb572160b51d454f",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "src/answer_diagnostic.py": "ddd76eaf097177a9a088db52a84c5264744d89beac342b571a3e89bbda09ff78",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "settings.json": "8b4b2565876e809fddd5042c347c30d78d8d0279973ef9cf5d65e9817a232675",
+    "requirements.txt": "a74ba840e58d2d4a2dacdcc8e52353515960071320071f3dab58c2b46394e3c4",
+    "configs/repair_pilot.json": "fada9b6d327df1e097205e5a02467dab3913c2e2b13e48f0ba1d9cac6af8d893",
+    "configs/data_sources.json": "d69de721dc7244799d8ba87c1fd5196db9d5e3ea6e07503bcacf8ddac06901fc",
+    "configs/benchmark_protocol.json": "33e91568952d24fa8ccd2b95ca2a816adb2ef9e2bb4892a69441d95f3e27f449",
+    "configs/answer_format.json": "5a648bf6f498353d5384881f1b80443cf8c469c928baaa6749c29606849a5cba"
+  },
+  "changed_or_added_code": [
+    "evaluate.py",
+    "src/readout_experiment.py",
+    "tests/test_readout_experiment.py"
+  ]
+}

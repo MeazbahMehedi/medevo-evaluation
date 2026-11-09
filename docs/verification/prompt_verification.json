@@ -1,0 +1,793 @@
+{
+  "prepared_date_utc": "2026-11-08",
+  "scope": "Exploratory answer-format diagnostic; no final test generation or training",
+  "test_suite": {
+    "test_count": 45,
+    "status": "passed",
+    "output_file": "test_results.txt"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "platform": "Linux-6.18.57-x86_64-with-glibc2.39",
+    "cpu_count": 9,
+    "free_disk_gib": 54.26,
+    "packages": {
+      "torch": "2.15.0+cpu",
+      "torchvision": "0.29.2+cpu",
+      "transformers": "5.22.2",
+      "peft": "0.21.2",
+      "accelerate": "1.15.0",
+      "psutil": "7.2.2",
+      "Pillow": "13.0.0",
+      "huggingface-hub": "2.4.0",
+      "num2words": "0.5.14",
+      "socksio": "1.0.0",
+      "pyarrow": "26.0.1"
+    },
+    "git_installed": true,
+    "github_cli_installed": false,
+    "total_ram_gib": 9.73,
+    "available_ram_gib": 9.03
+  },
+  "comparison": {
+    "experiment_id": "concise-boxed-v1",
+    "status": "complete",
+    "role": "feedback",
+    "scope": "five fixed questions per dataset",
+    "comparison_folder": "outputs/20261108T025241Z_prompt_comparison_379560",
+    "original_prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+    "trial_prompt": "Answer the question directly using a word, number, or short phrase.\nPut your final answer inside \\boxed{}.\nDo not include an explanation.",
+    "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+    "profile_sha256": "5a648bf6f498353d5384881f1b80443cf8c469c928baaa6749c29606849a5cba",
+    "settings": {
+      "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+      "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+      "seed": 7,
+      "cpu_threads": 4,
+      "image_edge": 512,
+      "max_new_tokens": 16,
+      "learning_rate": 0.001,
+      "timeout_seconds": 1200,
+      "memory_limit_gib": 10,
+      "minimum_available_gib": 6
+    },
+    "source_sha256": {
+      "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+      "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+      "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+      "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+      "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+      "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+      "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+      "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+      "evaluate.py": "e3c0ad3658d35e8baff5b0a970732e75c1c8c87fb21ce0eaf16d3fbe22e03f7d"
+    },
+    "baseline_evidence": {
+      "vqa_rad": {
+        "directory": "outputs/20261108T025000Z_vqa_rad_feedback_a00313",
+        "file_sha256": {
+          "run.json": "4352f77afe6ef71cd29e813cdd7b5ef6f972fdeba7efe642f6717ac07891cf09",
+          "predictions.jsonl": "6d6a30901936e497d42baa3cb8c8c0c311477ce3187d20522cffd4068ad9f0b2",
+          "metrics.json": "34c1419fc89f8c9366304b28da1384b4758092ab1f215b9dfa184ebb70ef7811",
+          "scored.jsonl": "511b17ce80f599251b79e1e9becb0d7a956b286f51d645abaa8afc71edbf7107",
+          "resources.json": "400fec3f5e6f501b33601bcdb27fa41ff66861097fadc6830778ba5795a626c0"
+        },
+        "signature": {
+          "benchmark": "vqa_rad",
+          "role": "feedback",
+          "limit": 5,
+          "scope": "subset",
+          "selected_ids": [
+            "vqa_rad:train:001713",
+            "vqa_rad:train:001159",
+            "vqa_rad:train:000918",
+            "vqa_rad:train:001765",
+            "vqa_rad:train:000925"
+          ],
+          "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+          "settings": {
+            "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+            "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+            "seed": 7,
+            "cpu_threads": 4,
+            "image_edge": 512,
+            "max_new_tokens": 16,
+            "learning_rate": 0.001,
+            "timeout_seconds": 1200,
+            "memory_limit_gib": 10,
+            "minimum_available_gib": 6
+          },
+          "protocol": {
+            "protocol_id": "medical-vqa-cpu-v1",
+            "seed": 7,
+            "rad_feedback_fraction": 0.1,
+            "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+            "max_new_tokens": 128,
+            "evaluation_timeout_seconds": 28800,
+            "scoring_id": "boxed-strict-em-v1",
+            "training_policy": "exclude_exact_test_and_feedback_images"
+          },
+          "code_sha256": {
+            "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+            "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+            "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+            "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+            "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+            "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+            "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+            "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+            "evaluate.py": "e3c0ad3658d35e8baff5b0a970732e75c1c8c87fb21ce0eaf16d3fbe22e03f7d"
+          },
+          "packages": {
+            "torch": "2.15.0+cpu",
+            "torchvision": "0.29.2+cpu",
+            "transformers": "5.22.2",
+            "peft": "0.21.2",
+            "accelerate": "1.15.0",
+            "psutil": "7.2.2",
+            "Pillow": "13.0.0",
+            "huggingface-hub": "2.4.0",
+            "num2words": "0.5.14",
+            "socksio": "1.0.0",
+            "pyarrow": "26.0.1"
+          },
+          "python": "3.12.14"
+        },
+        "summary": {
+          "selected_count": 5,
+          "generated_count": 5,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 4,
+          "token_limit_count": 2,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 0.0,
+          "normalized_em_accuracy_pct": 0.0,
+          "mean_token_f1_pct": 0.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0
+          },
+          "generation_seconds": 56.814
+        },
+        "resources": {
+          "worker_exit_code": 0,
+          "limit_reached": null,
+          "elapsed_seconds": 75.313,
+          "peak_process_tree_rss_bytes": null,
+          "peak_process_tree_rss_gib": null,
+          "memory_measurement_available": false,
+          "memory_sampling_seconds": 0.2,
+          "attempt_id": "20261108T025000Z_931434",
+          "measurement_scope": "current worker attempt; not cumulative",
+          "memory_measurement_plausible": false,
+          "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+        }
+      },
+      "slake": {
+        "directory": "outputs/20261108T025129Z_slake_feedback_47e6a8",
+        "file_sha256": {
+          "run.json": "865f60dba1ca0807ed35f65805b4675d0f06061dbea9b536a628a86d52aadc34",
+          "predictions.jsonl": "f0d38bddc8f4c23e578b5dfcdf89fb9faef1a06df1c6d37fc49d1ee82dac3ee2",
+          "metrics.json": "e04b4e81d9bc741028edd1dff4a8e7af535e7a72f2087434a9fae79c37019cad",
+          "scored.jsonl": "f1642f229f6f2a477fb1fe4916aa8cd547007d2c7928050a80043dde0f200d86",
+          "resources.json": "01e56172d32b8a821c59f50a69706e21dbd5d26586f269a28fd42af5e052b8ba"
+        },
+        "signature": {
+          "benchmark": "slake",
+          "role": "feedback",
+          "limit": 5,
+          "scope": "subset",
+          "selected_ids": [
+            "slake:validation:10615",
+            "slake:validation:10828",
+            "slake:validation:10056",
+            "slake:validation:9926",
+            "slake:validation:10092"
+          ],
+          "dataset_metadata_sha256": "cb64d1615004513c387524969dc2f8ee7dd5291e2aaa87fc1f2c2e6879ce8503",
+          "settings": {
+            "model_id": "HuggingFaceTB/SmolVLM2-500M-Video-Instruct",
+            "revision": "7b375e1b73b11138ff12fe22c8f2822d8fe03467",
+            "seed": 7,
+            "cpu_threads": 4,
+            "image_edge": 512,
+            "max_new_tokens": 16,
+            "learning_rate": 0.001,
+            "timeout_seconds": 1200,
+            "memory_limit_gib": 10,
+            "minimum_available_gib": 6
+          },
+          "protocol": {
+            "protocol_id": "medical-vqa-cpu-v1",
+            "seed": 7,
+            "rad_feedback_fraction": 0.1,
+            "prompt": "Please reason step by step, and put your final answer within \\boxed{}.",
+            "max_new_tokens": 128,
+            "evaluation_timeout_seconds": 28800,
+            "scoring_id": "boxed-strict-em-v1",
+            "training_policy": "exclude_exact_test_and_feedback_images"
+          },
+          "code_sha256": {
+            "src/__init__.py": "ccc426eba9668fc93bc3f4edc20a9fb255434638168966d86d0478023bac8325",
+            "src/auditor.py": "f6c0a8c3dbe9399fbf658c553c514b00a0ad8a11806b1aef927ce592c97ee945",
+            "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+            "src/evaluation.py": "e95b9e995b28bc55faedc02fba3100c0b7803f8dd9dfacd1fec5a190c59566ab",
+            "src/model.py": "94f035c8bb273f39532e5bda84fcc8a030d0c1b71dcfce4c414280d3b7ef18a1",
+            "src/prompt_experiment.py": "3155b1da4b1b09d927bc0bcb5cdd2bde890cf10f8947ffd1e04724567b456289",
+            "src/runtime.py": "90cac36f8c882b70935cca5fc73ac13296e7305e55679ac2cab48d3a12b166a8",
+            "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+            "evaluate.py": "e3c0ad3658d35e8baff5b0a970732e75c1c8c87fb21ce0eaf16d3fbe22e03f7d"
+          },
+          "packages": {
+            "torch": "2.15.0+cpu",
+            "torchvision": "0.29.2+cpu",
+            "transformers": "5.22.2",
+            "peft": "0.21.2",
+            "accelerate": "1.15.0",
+            "psutil": "7.2.2",
+            "Pillow": "13.0.0",
+            "huggingface-hub": "2.4.0",
+            "num2words": "0.5.14",
+            "socksio": "1.0.0",
+            "pyarrow": "26.0.1"
+          },
+          "python": "3.12.14"
+        },
+        "summary": {
+          "selected_count": 5,
+          "generated_count": 5,
+          "error_count": 0,
+          "missing_count": 0,
+          "parse_failure_count": 5,
+          "token_limit_count": 1,
+          "coverage_pct": 100.0,
+          "status": "complete",
+          "strict_em_accuracy_pct": 0.0,
+          "normalized_em_accuracy_pct": 0.0,
+          "mean_token_f1_pct": 0.0,
+          "generated_only_metrics": {
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0
+          },
+          "generation_seconds": 38.898
+        },
+        "resources": {
+          "worker_exit_code": 0,
+          "limit_reached": null,
+          "elapsed_seconds": 57.882,
+          "peak_process_tree_rss_bytes": null,
+          "peak_process_tree_rss_gib": null,
+          "memory_measurement_available": false,
+          "memory_sampling_seconds": 0.2,
+          "attempt_id": "20261108T025129Z_046535",
+          "measurement_scope": "current worker attempt; not cumulative",
+          "memory_measurement_plausible": false,
+          "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+        }
+      }
+    },
+    "datasets": {
+      "vqa_rad": {
+        "baseline_run": "outputs/20261108T025000Z_vqa_rad_feedback_a00313",
+        "trial_run": "outputs/20261108T025253Z_vqa_rad_feedback_9ca6e7",
+        "selected_ids": [
+          "vqa_rad:train:001713",
+          "vqa_rad:train:001159",
+          "vqa_rad:train:000918",
+          "vqa_rad:train:001765",
+          "vqa_rad:train:000925"
+        ],
+        "baseline": {
+          "summary": {
+            "selected_count": 5,
+            "generated_count": 5,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 4,
+            "token_limit_count": 2,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 56.814
+          },
+          "format_success_pct": 20.0,
+          "resources": {
+            "worker_exit_code": 0,
+            "limit_reached": null,
+            "elapsed_seconds": 75.313,
+            "peak_process_tree_rss_bytes": null,
+            "peak_process_tree_rss_gib": null,
+            "memory_measurement_available": false,
+            "memory_sampling_seconds": 0.2,
+            "attempt_id": "20261108T025000Z_931434",
+            "measurement_scope": "current worker attempt; not cumulative",
+            "memory_measurement_plausible": false,
+            "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+          }
+        },
+        "trial": {
+          "summary": {
+            "selected_count": 5,
+            "generated_count": 5,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 5,
+            "token_limit_count": 0,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 9.56
+          },
+          "format_success_pct": 0.0,
+          "resources": {
+            "worker_exit_code": 0,
+            "limit_reached": null,
+            "elapsed_seconds": 28.245,
+            "peak_process_tree_rss_bytes": null,
+            "peak_process_tree_rss_gib": null,
+            "memory_measurement_available": false,
+            "memory_sampling_seconds": 0.2,
+            "attempt_id": "20261108T025253Z_b0ec65",
+            "measurement_scope": "current worker attempt; not cumulative",
+            "memory_measurement_plausible": false,
+            "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+          }
+        },
+        "change_percentage_points": {
+          "strict_em_accuracy": 0.0,
+          "normalized_em_accuracy": 0.0,
+          "mean_token_f1": 0.0,
+          "format_success": -20.0
+        }
+      },
+      "slake": {
+        "baseline_run": "outputs/20261108T025129Z_slake_feedback_47e6a8",
+        "trial_run": "outputs/20261108T025334Z_slake_feedback_93ea85",
+        "selected_ids": [
+          "slake:validation:10615",
+          "slake:validation:10828",
+          "slake:validation:10056",
+          "slake:validation:9926",
+          "slake:validation:10092"
+        ],
+        "baseline": {
+          "summary": {
+            "selected_count": 5,
+            "generated_count": 5,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 5,
+            "token_limit_count": 1,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 38.898
+          },
+          "format_success_pct": 0.0,
+          "resources": {
+            "worker_exit_code": 0,
+            "limit_reached": null,
+            "elapsed_seconds": 57.882,
+            "peak_process_tree_rss_bytes": null,
+            "peak_process_tree_rss_gib": null,
+            "memory_measurement_available": false,
+            "memory_sampling_seconds": 0.2,
+            "attempt_id": "20261108T025129Z_046535",
+            "measurement_scope": "current worker attempt; not cumulative",
+            "memory_measurement_plausible": false,
+            "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+          }
+        },
+        "trial": {
+          "summary": {
+            "selected_count": 5,
+            "generated_count": 5,
+            "error_count": 0,
+            "missing_count": 0,
+            "parse_failure_count": 5,
+            "token_limit_count": 0,
+            "coverage_pct": 100.0,
+            "status": "complete",
+            "strict_em_accuracy_pct": 0.0,
+            "normalized_em_accuracy_pct": 0.0,
+            "mean_token_f1_pct": 0.0,
+            "generated_only_metrics": {
+              "strict_em_accuracy_pct": 0.0,
+              "normalized_em_accuracy_pct": 0.0,
+              "mean_token_f1_pct": 0.0
+            },
+            "generation_seconds": 10.112
+          },
+          "format_success_pct": 0.0,
+          "resources": {
+            "worker_exit_code": 0,
+            "limit_reached": null,
+            "elapsed_seconds": 28.841,
+            "peak_process_tree_rss_bytes": null,
+            "peak_process_tree_rss_gib": null,
+            "memory_measurement_available": false,
+            "memory_sampling_seconds": 0.2,
+            "attempt_id": "20261108T025334Z_320dba",
+            "measurement_scope": "current worker attempt; not cumulative",
+            "memory_measurement_plausible": false,
+            "warning": "RAM measurement requires target-PC verification; do not report this as a validated peak"
+          }
+        },
+        "change_percentage_points": {
+          "strict_em_accuracy": 0.0,
+          "normalized_em_accuracy": 0.0,
+          "mean_token_f1": 0.0,
+          "format_success": 0.0
+        }
+      }
+    },
+    "trial_folders": {
+      "vqa_rad": "outputs/20261108T025253Z_vqa_rad_feedback_9ca6e7",
+      "slake": "outputs/20261108T025334Z_slake_feedback_93ea85"
+    },
+    "original_baseline_files_unchanged": true
+  },
+  "scored_development_predictions": {
+    "vqa_rad": {
+      "original": [
+        {
+          "id": "vqa_rad:train:001713",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "no",
+          "status": "generated",
+          "raw_response": "The image does not provide enough detail to determine if there is a subarachnoid bleed. However, it is important to note that a subarachnoid hemorrhage is a medical emergency that requires immediate attention. If the image shows a subarachnoid hemorrhage, it would be necessary to seek medical attention immediately.\n\nTherefore, the answer to the question is:\n\n\\boxed{Subarachnoid hemorrhage}",
+          "generated_tokens": 91,
+          "generation_seconds": 10.159,
+          "hit_token_limit": false,
+          "parsed_answer": "Subarachnoid hemorrhage",
+          "parse_failed": false,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:001159",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "yes",
+          "status": "generated",
+          "raw_response": "The image does not specifically highlight bone fractures. However, it does show a chest X-ray with a right lung shadow that appears to be slightly elevated compared to the left lung shadow. This could be indicative of a pneumothorax, which is a condition where air accumulates in the space between the lungs and the chest wall.\n\nIn a normal chest X-ray, the right lung shadow would be more prominent than the left, as the right lung is typically more curved and has a more rounded appearance. However, the elevated right lung shadow could be due to a variety of factors, such as a pneumothorax, a",
+          "generated_tokens": 128,
+          "generation_seconds": 13.789,
+          "hit_token_limit": true,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:000918",
+          "dataset": "vqa_rad",
+          "answer_type": "open",
+          "reference": "abscess",
+          "status": "generated",
+          "raw_response": "The image is suggestive of a brain tumor. This is indicated by the presence of a lesion in the right parietal lobe, which is a common feature of brain tumors. The size of the lesion is also significant, with a diameter of approximately 120 mm. The presence of a lesion in the right parietal lobe is a common finding in brain tumors, and it is often associated with a higher likelihood of malignant behavior. The image also shows a normal brain scan, which is a common feature of brain tumors. Therefore, the image is suggestive of a brain tumor.",
+          "generated_tokens": 118,
+          "generation_seconds": 13.596,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:001765",
+          "dataset": "vqa_rad",
+          "answer_type": "open",
+          "reference": "posterior brain",
+          "status": "generated",
+          "raw_response": "The bottom of the image indicates the right temporal lobe. This is because the right temporal lobe is located on the right side of the brain, and it is the part of the brain that is responsible for processing auditory information and memory.",
+          "generated_tokens": 47,
+          "generation_seconds": 6.094,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:000925",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "yes",
+          "status": "generated",
+          "raw_response": "The lesion appears to be enhancing, which is a characteristic feature of a lesion that is well-circumscribed and has a well-defined border. This is a positive sign that the lesion is likely to be a normal brain structure, such as a cyst or a lesion that is not causing any significant damage.\n\nHowever, it's important to note that the size of the lesion and its location relative to the brain tissue can also provide clues about its nature. In this case, the lesion appears to be quite large, which could suggest that it is a large cyst or a lesion that is causing significant damage.\n\nOverall, the",
+          "generated_tokens": 128,
+          "generation_seconds": 13.176,
+          "hit_token_limit": true,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ],
+      "trial": [
+        {
+          "id": "vqa_rad:train:001713",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "no",
+          "status": "generated",
+          "raw_response": "No.",
+          "generated_tokens": 3,
+          "generation_seconds": 1.912,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:001159",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "yes",
+          "status": "generated",
+          "raw_response": "Yes.",
+          "generated_tokens": 3,
+          "generation_seconds": 1.887,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:000918",
+          "dataset": "vqa_rad",
+          "answer_type": "open",
+          "reference": "abscess",
+          "status": "generated",
+          "raw_response": "brain tumor",
+          "generated_tokens": 3,
+          "generation_seconds": 1.822,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:001765",
+          "dataset": "vqa_rad",
+          "answer_type": "open",
+          "reference": "posterior brain",
+          "status": "generated",
+          "raw_response": "basal ganglia",
+          "generated_tokens": 4,
+          "generation_seconds": 2.092,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "vqa_rad:train:000925",
+          "dataset": "vqa_rad",
+          "answer_type": "closed",
+          "reference": "yes",
+          "status": "generated",
+          "raw_response": "Yes",
+          "generated_tokens": 2,
+          "generation_seconds": 1.847,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ]
+    },
+    "slake": {
+      "original": [
+        {
+          "id": "slake:validation:10615",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "Brain Edema, Brain Enhancing Tumor, Brain Non-enhancing Tumor",
+          "status": "generated",
+          "raw_response": "The disease shown on the right of the brain is multiple sclerosis. Multiple sclerosis is a chronic autoimmune disease that affects the central nervous system (CNS), causing damage to the protective covering of nerve fibers (myelin) and leading to communication problems between the brain and spinal cord.",
+          "generated_tokens": 56,
+          "generation_seconds": 6.799,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10828",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "MRI",
+          "status": "generated",
+          "raw_response": "The image is a medical scan, specifically a CT (Computed Tomography) scan. This is indicated by the presence of a cross-sectional image of the brain, which is a common feature of CT scans. The scan is likely taken using a CT scanner, which uses X-rays to create detailed images of the internal structures of the body. The image is likely taken in a clinical setting, such as a hospital or a medical center, where it is used to diagnose and monitor various conditions, including brain tumors, strokes, and other neurological disorders.",
+          "generated_tokens": 112,
+          "generation_seconds": 11.884,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10056",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "CT",
+          "status": "generated",
+          "raw_response": "The image is a CT scan.",
+          "generated_tokens": 8,
+          "generation_seconds": 2.368,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:9926",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "X-Ray",
+          "status": "generated",
+          "raw_response": "The modality used to take this image is a chest X-ray.\n\nFinal Answer: The modality used to take this image is a chest X-ray.",
+          "generated_tokens": 34,
+          "generation_seconds": 4.587,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10092",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "2",
+          "status": "generated",
+          "raw_response": "The image shows a cross-sectional view of the abdominal cavity, which is a common part of a medical imaging study. The kidneys are located on either side of the spine, and they are bean-shaped structures that are responsible for filtering waste products from the blood and producing urine.\n\nIn this image, the kidneys are visible as two bean-shaped structures, one on each side of the spine. The image is a grayscale scan, which means that the kidneys are not colored, but rather the structures are represented in shades of gray.\n\nThe kidneys are surrounded by a layer of fat, which helps to protect them from injury",
+          "generated_tokens": 128,
+          "generation_seconds": 13.26,
+          "hit_token_limit": true,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ],
+      "trial": [
+        {
+          "id": "slake:validation:10615",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "Brain Edema, Brain Enhancing Tumor, Brain Non-enhancing Tumor",
+          "status": "generated",
+          "raw_response": "Multiple sclerosis.",
+          "generated_tokens": 4,
+          "generation_seconds": 2.101,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10828",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "MRI",
+          "status": "generated",
+          "raw_response": "MRI",
+          "generated_tokens": 2,
+          "generation_seconds": 1.867,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10056",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "CT",
+          "status": "generated",
+          "raw_response": "CT scan",
+          "generated_tokens": 3,
+          "generation_seconds": 1.937,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:9926",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "X-Ray",
+          "status": "generated",
+          "raw_response": "X-ray.",
+          "generated_tokens": 5,
+          "generation_seconds": 2.281,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        },
+        {
+          "id": "slake:validation:10092",
+          "dataset": "slake",
+          "answer_type": "open",
+          "reference": "2",
+          "status": "generated",
+          "raw_response": "2",
+          "generated_tokens": 3,
+          "generation_seconds": 1.926,
+          "hit_token_limit": false,
+          "parsed_answer": null,
+          "parse_failed": true,
+          "strict_correct": false,
+          "normalized_correct": false,
+          "token_f1": 0.0
+        }
+      ]
+    }
+  },
+  "primary_model_source_unchanged": true,
+  "scoring_source_unchanged": true,
+  "trial_adopted_for_final_evaluation": false,
+  "validated_linux_peak_ram_available": false
+}
