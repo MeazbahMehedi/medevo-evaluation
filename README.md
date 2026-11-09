@@ -162,23 +162,38 @@ To evaluate the released adapter without retraining:
 
 ## Reproducing the study
 
-The full sequence, with expected run times, is in [docs/running_the_study.md](docs/running_the_study.md):
+**Re-running the reported study** uses the published frozen protocol:
 
-```powershell
-& $py freeze_protocol.py --per-dataset 200
-& $py run_test_evaluation.py --system baseline
-& $py prepare_primary_model.py
-& $py run_test_evaluation.py --system primary
-& $py build_training_bank.py --questions 100
-& $py reaudit_failures.py
-& $py train_adapter.py --epochs 2
-& $py run_test_evaluation.py --system adapted --adapter-dir outputs\adapter_v1\adapter
-& $py compile_results.py
-```
+1. Extract `medevo-benchmark-images-v1.zip` (release [`data-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/data-v1))
+   into `data/benchmarks/`. The scripts check the data hashes against the protocol and stop if they differ.
+2. Copy the protocol to the folder the scripts read:
 
+   ```powershell
+   New-Item -ItemType Directory -Force outputs\frozen_protocol_v1 | Out-Null
+   Copy-Item results\protocol\* outputs\frozen_protocol_v1\
+   ```
+3. Run the stages:
+
+   ```powershell
+   & $py run_test_evaluation.py --system baseline
+   & $py run_test_evaluation.py --system primary
+   & $py build_training_bank.py --questions 100
+   & $py reaudit_failures.py
+   & $py train_adapter.py --epochs 2
+   & $py run_test_evaluation.py --system adapted --adapter-dir outputs\adapter_v1\adapter
+   & $py compile_results.py
+   ```
+
+To evaluate the released adapter without retraining, use the folder extracted from
+[`adapter-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/adapter-v1) as `--adapter-dir`.
 Long runs are resumable: re-running a command continues from the last completed question.
-The protocol used for the reported results is in [results/protocol/](results/protocol/);
-`freeze_protocol.py` refuses to overwrite an existing protocol.
+
+**Starting a new experiment:** `freeze_protocol.py` builds a new protocol from feedback runs, which are not stored in
+the repository. Run `evaluate_feedback.py` and `compare_feedback_budget.py` first (inspect, then run), then
+`freeze_protocol.py --per-dataset 200` and `prepare_primary_model.py`. If the budget rule cannot decide, pass `--budget`
+with `--reason`; the reported protocol used this manual override (see `budget_decision` in
+[results/protocol/protocol.json](results/protocol/protocol.json)). `freeze_protocol.py` refuses to overwrite an existing
+protocol. Full guide with run times: [docs/running_the_study.md](docs/running_the_study.md).
 
 ## Evaluation protocol
 
