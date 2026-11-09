@@ -1,5 +1,10 @@
 # MedEvo Evaluation Study
 
+[![Python 3.12](https://img.shields.io/badge/python-3.12-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
+[![Paper](https://img.shields.io/badge/arXiv-2610.17690-B31B1B)](https://arxiv.org/abs/2610.17690)
+[![Data](https://img.shields.io/badge/data-CC0%20%7C%20CC%20BY%204.0-lightgrey)](data/README.md)
+
 ![MedEvo Evaluation Study](docs/assets/banner.jpg)
 
 An independent, reduced-scale evaluation of
@@ -21,6 +26,8 @@ See [Project status](#project-status).
 
 Reserved test subsets: 200 questions per dataset, stratified by open/closed answer type. Accuracy in %,
 95% bootstrap intervals in brackets. Primary metric: normalized exact match of the final `\boxed{}` answer.
+
+![Accuracy on the frozen test subsets](docs/assets/results.svg)
 
 | Model | Metric | VQA-RAD | SLAKE | Overall |
 |---|---|---|---|---|
@@ -67,6 +74,19 @@ auditor treated these as reasoning errors, and the model kept boxing `1`/`0` in 
 Full tables and per-question records: [results/](results/README.md).
 
 ## Method
+
+```mermaid
+flowchart TD
+    Q[Training question] --> R[4 sampled rollouts<br/>Qwen3.5-2B]
+    R --> V{Any rollout<br/>correct?}
+    V -- yes --> B[(Training bank)]
+    V -- no --> A[Reference-free audit<br/>first error + hint<br/>Qwen3.5-9B]
+    A --> C[Continue from supported prefix<br/>with hint, up to 5 tries]
+    C --> G{Admission:<br/>correct, clean,<br/>no leak, learnable}
+    G -- pass --> B
+    G -- fail --> X[Rejected, logged]
+    B --> L[LoRA fine-tuning] --> E[Evaluate on frozen test set]
+```
 
 | Component | MedEvo paper | This study |
 |---|---|---|
@@ -125,6 +145,19 @@ Get the benchmark images (see [data/README.md](data/README.md)), then check the 
 ```powershell
 & $py evaluate.py inspect
 & $py -m unittest discover -s tests -v
+```
+
+## Downloads
+
+| Release | Contents | Size |
+|---|---|---|
+| [`data-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/data-v1) | Prepared VQA-RAD and SLAKE images (`medevo-benchmark-images-v1.zip`) | 222 MB |
+| [`adapter-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/adapter-v1) | LoRA adapter for Qwen3.5-2B trained on the Phase 3 bank (`medevo-lora-adapter-v1.zip`) | 62 MB |
+
+To evaluate the released adapter without retraining:
+
+```powershell
+& $py run_test_evaluation.py --system adapted --adapter-dir path\to\adapter
 ```
 
 ## Reproducing the study
