@@ -1,0 +1,17 @@
+{
+  "status": "complete",
+  "reaudited": 60,
+  "targets": 60,
+  "outcomes": {
+    "audit_invalid": 1,
+    "audit_skip": 1,
+    "hint_rejected_leak": 1,
+    "repair_admitted": 3,
+    "repair_attempts_rejected": 54
+  },
+  "admitted_repairs": 3,
+  "admitted_correct_rollouts": 40,
+  "bank_size": 43,
+  "bank_file": "D:\\MedEvo_Phase1\\outputs\\training_bank_v2\\training_bank.jsonl",
+  "updated_utc": "2026-11-09T11:39:54.142526+00:00"
+}

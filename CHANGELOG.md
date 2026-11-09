@@ -16,7 +16,8 @@ Phase 3: frozen protocol, test baselines and training-bank construction.
 - Test baselines on the 400 reserved questions: Qwen3.5-9B 57.0%, Qwen3.5-2B 21.5% (47.0% on the
   secondary metric).
 - Training bank v1 from 100 training questions: 40 verified correct rollouts, 0 repairs.
-- Re-audit (v2) aligned with the MedEvo audit prompt, continuation budget and learnability gates.
+- Re-audit (v2) aligned with the MedEvo audit prompt, continuation budget and learnability gates:
+  repairs proposed for 58 of 60 failures, 3 admitted; final training bank of 43 examples.
 - Feedback and auditor experiments from the earlier part of this phase, with notes in `docs/experiments`
   and verification records in `docs/verification`.
 

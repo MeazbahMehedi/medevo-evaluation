@@ -13,8 +13,8 @@ with a minimal hint, admit only checked examples, and fine-tune with LoRA. All d
 affect results (prompt, output budget, metrics, test subset) are fixed on feedback data before any
 test-set generation.
 
-**Status:** Phases 1-2 complete. Phase 3 test baselines and training bank v1 are complete; the re-audit of
-failed rollouts with the MedEvo audit prompt is running. Adaptation and the final comparison follow.
+**Status:** Phases 1-3 complete: frozen protocol, test baselines and a 43-example training bank.
+LoRA adaptation (Phase 4) and the final before/after comparison (Phase 5) follow.
 See [Project status](#project-status).
 
 ## Results
@@ -37,10 +37,19 @@ The paper's numbers use full benchmarks, full-precision weights and MedUniEval s
 our Qwen3.5-9B result is on open-ended questions (VQA-RAD 28.1%, SLAKE 41.0%), where strict exact
 match rejects equivalent wording; closed questions score 79.3% and 83.3%.
 
-Phase 3 training bank v1 (100 training questions, 4 rollouts each): 40 verified correct rollouts admitted.
-The v1 audit instruction did not tell the auditor that the trajectory had failed verification, and it
-skipped all 60 failed questions. The v2 re-audit reuses those rollouts with an instruction aligned to the
-MedEvo audit prompt (Appendix D.3); its results will be added here.
+Phase 3 training bank (100 training questions, 4 rollouts each): **43 examples**, 40 verified correct
+rollouts and 3 admitted repairs.
+
+| Stage | Result |
+|---|---|
+| v1 audit (instruction did not state that the trajectory failed) | 60 of 60 failures skipped, 0 repairs |
+| v2 re-audit (aligned with MedEvo Appendix D.3) | repair proposed for 58 of 60 failures |
+| Continuations (up to 5 per failure, 280 total) | 268 still incorrect; 10 correct and clean |
+| Learnability gates (paper thresholds) | 3 admitted |
+
+Most proposed errors were visual misreadings (52 V, 6 K). The binding constraint was the 2B model's ability
+to correct itself after a hint. In 31 failures the only problem was a boxed `1`/`0`; the reference-free
+auditor treated these as reasoning errors, and the model kept boxing `1`/`0` in 112 continuations.
 
 Full tables and per-question records: [results/](results/README.md).
 
@@ -145,7 +154,7 @@ protocol: [docs/protocol.md](docs/protocol.md).
 |---|---|---|
 | 1 | Environment and CPU feasibility | Complete |
 | 2 | Data preparation and evaluation infrastructure | Complete |
-| 3 | Frozen protocol, test baselines, training bank | Baselines and bank v1 complete; v2 re-audit running |
+| 3 | Frozen protocol, test baselines, training bank | Complete (bank v2: 43 examples) |
 | 4 | LoRA adaptation of Qwen3.5-2B | Pending |
 | 5 | Adapted-model evaluation and technical report | Pending |
 

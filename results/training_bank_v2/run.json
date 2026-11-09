@@ -1,0 +1,119 @@
+{
+  "source_cases_sha256": "43574e9334f7b3d465f76ba38ad77bbe3bb06c44dd539136f5a01400c90cbbec",
+  "target_ids": [
+    "vqa_rad:train:001690",
+    "vqa_rad:train:000922",
+    "vqa_rad:train:000548",
+    "vqa_rad:train:000861",
+    "vqa_rad:train:000513",
+    "vqa_rad:train:001522",
+    "vqa_rad:train:000871",
+    "vqa_rad:train:000759",
+    "vqa_rad:train:001722",
+    "vqa_rad:train:000235",
+    "vqa_rad:train:000619",
+    "vqa_rad:train:001565",
+    "vqa_rad:train:001042",
+    "vqa_rad:train:001375",
+    "vqa_rad:train:000160",
+    "vqa_rad:train:001454",
+    "vqa_rad:train:000354",
+    "vqa_rad:train:001202",
+    "vqa_rad:train:001504",
+    "vqa_rad:train:000428",
+    "vqa_rad:train:000752",
+    "vqa_rad:train:001171",
+    "vqa_rad:train:000222",
+    "vqa_rad:train:001277",
+    "vqa_rad:train:001115",
+    "vqa_rad:train:000444",
+    "vqa_rad:train:001321",
+    "vqa_rad:train:000102",
+    "vqa_rad:train:000375",
+    "vqa_rad:train:000547",
+    "vqa_rad:train:001784",
+    "vqa_rad:train:000564",
+    "vqa_rad:train:000655",
+    "vqa_rad:train:001788",
+    "slake:train:9",
+    "slake:train:66",
+    "slake:train:2033",
+    "slake:train:840",
+    "slake:train:2725",
+    "slake:train:3118",
+    "slake:train:3729",
+    "slake:train:1322",
+    "slake:train:462",
+    "slake:train:2160",
+    "slake:train:1668",
+    "slake:train:1479",
+    "slake:train:2248",
+    "slake:train:2935",
+    "slake:train:1659",
+    "slake:train:4206",
+    "slake:train:742",
+    "slake:train:1875",
+    "slake:train:659",
+    "slake:train:4123",
+    "slake:train:3739",
+    "slake:train:1798",
+    "slake:train:564",
+    "slake:train:4810",
+    "slake:train:638",
+    "slake:train:3616"
+  ],
+  "repair": {
+    "audit_instruction": "v2, aligned with MedEvo Appendix D.3",
+    "continuation_attempts": 5,
+    "repair_ratio_range": [
+      0.35,
+      0.85
+    ],
+    "repair_gap_range": [
+      0.02,
+      0.3
+    ],
+    "threshold_source": "paper values, not recalibrated on our feedback set",
+    "recovery_cue": "\nLet me recheck the evidence. {hint}\n",
+    "training_target": "prefix + recovery cue + new suffix (Eq. 13)"
+  },
+  "auditor_think": false,
+  "protocol_sha256": "4fb43de25602b3671483de7fe058f55caee8a19bd759930c79c31401385ed5a0",
+  "started_utc": "2026-11-09T09:01:15.894918+00:00",
+  "code_sha256": {
+    "medevo_study/__init__.py": "4bf96fdc3bdff4838844ea8ea25261726d8684eee4a238546543f538b645d18b",
+    "medevo_study/collection.py": "ee151bd3abe69ce2d6b4cd7008cb9901274c8b0c7779d8fd19e538a76075f1d7",
+    "medevo_study/core.py": "82637dee20fde528a898149464fa6d5073ae00fb168ae02eb6c915abeb9c752b",
+    "medevo_study/ollama_backend.py": "2e2065110228ab060e65a19cc95613f68f6d6d3e2c093af245a5d9f2b4722787",
+    "medevo_study/transformers_backend.py": "55962a6e4a16510db4dcfeb13542a1c35ca2f24fede836bab1eeab2a25a150af",
+    "src/scoring.py": "b5c34206ce6fc23f6563daf9286cf0b63c9f2922c4bf1166bdb3f48146cc846c",
+    "feedback_scoring.py": "3754e8f099df5ae8240e0c57e3d483d48fbfff5c44a8e4c024d84c652401fc6a",
+    "src/benchmarks.py": "618709177aca91cdae5f69723b587427fecaa96c410142253f2b34e317d78fd0",
+    "evaluate_feedback.py": "5b2476c3ce19a9662c1ede4851e66d517d9ad1887fbf5253e7467dc985e6212b"
+  },
+  "attempts": [
+    {
+      "started_utc": "2026-11-09T09:01:23.478060+00:00",
+      "primary": {
+        "model_id": "Qwen/Qwen3.5-2B",
+        "revision": "15852e8c16360a2fea060d615a32b45270f8a8fc",
+        "dtype": "bfloat16",
+        "threads": 8,
+        "device": "cpu",
+        "loader": "AutoModelForMultimodalLM",
+        "transformers": "5.22.2",
+        "torch": "2.15.0+cpu",
+        "adapter_dir": null,
+        "parameters": 2213241664
+      },
+      "auditor": {
+        "ollama_version": {
+          "version": "0.40.15"
+        },
+        "model": "qwen3.5:9b",
+        "model_digest": "56671c2ab9385f9cfcb404638e32cd62d88e3501d44822208363c010179a3c90"
+      },
+      "ended_utc": "2026-11-09T11:39:54.131525+00:00"
+    }
+  ]
+}

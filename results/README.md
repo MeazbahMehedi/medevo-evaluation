@@ -13,6 +13,7 @@ Every prediction records the raw model response; scores can be recomputed with `
 | `baselines/qwen35_9b/` | Qwen3.5-9B (Ollama, Q4_K_M) on the 400 reserved test questions |
 | `baselines/qwen35_2b/` | Qwen3.5-2B (Transformers, bfloat16) on the same 400 questions |
 | `training_bank_v1/` | Phase 3 collection on 100 training questions: every case decision (`cases.jsonl`), the admitted examples (`training_bank.jsonl`) and the summary |
+| `training_bank_v2/` | Re-audit of the 60 v1 failures with the MedEvo-aligned audit prompt; final bank of 43 examples used for training |
 
 Each evaluation folder contains `run.json` (settings, code hashes, model identity), `scored.jsonl`
 (one record per question) and `summary.json` / `report.md` (metrics with 95% bootstrap intervals).
@@ -32,14 +33,15 @@ the same, reading a boxed `1`/`0` as yes/no for yes/no questions.
 Qwen3.5-2B boxed `1`/`0` instead of yes/no in 190 of 400 answers, which explains most of the gap between
 its two scores.
 
-## Phase 3 training bank (v1)
+## Phase 3 training bank
 
-| Outcome | Questions |
-|---|---:|
-| Correct rollout admitted | 40 |
-| All rollouts failed, auditor returned skip | 60 |
-| Repair admitted | 0 |
+| | v1 | v2 (re-audit of v1 failures) |
+|---|---|---|
+| Audit instruction | did not state that the trajectory failed | aligned with MedEvo Appendix D.3 |
+| Repairs proposed | 0 of 60 (all skipped) | 58 of 60 |
+| Continuation attempts | — | 280 (268 incorrect, 10 correct and clean) |
+| Repairs admitted | 0 | 3 |
+| Bank size | 40 | 43 (40 correct rollouts + 3 repairs) |
 
-The v1 audit instruction did not state that the trajectory had failed verification, unlike the MedEvo
-audit prompt (Appendix D.3), and the auditor skipped every case. This is recorded as a finding; see the
-main README for the follow-up.
+v2 outcomes: 3 repairs admitted, 54 with all continuations rejected, 1 hint rejected for leaking the answer,
+1 skipped and 1 invalid audit. Rejection reasons for every attempt are in `training_bank_v2/cases.jsonl`.
