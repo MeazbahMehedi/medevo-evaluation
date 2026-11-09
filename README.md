@@ -13,8 +13,8 @@ with a minimal hint, admit only checked examples, and fine-tune with LoRA. All d
 affect results (prompt, output budget, metrics, test subset) are fixed on feedback data before any
 test-set generation.
 
-**Status:** Phases 1-4 complete: frozen protocol, test baselines, a 43-example training bank and a LoRA
-adapter for Qwen3.5-2B. The adapted-model evaluation (Phase 5) follows.
+**Status:** all five phases complete: frozen protocol, test baselines, a 43-example training bank, LoRA
+adaptation of Qwen3.5-2B and its evaluation on the same reserved test questions.
 See [Project status](#project-status).
 
 ## Results
@@ -22,16 +22,29 @@ See [Project status](#project-status).
 Reserved test subsets: 200 questions per dataset, stratified by open/closed answer type. Accuracy in %,
 95% bootstrap intervals in brackets. Primary metric: normalized exact match of the final `\boxed{}` answer.
 
-| Model | VQA-RAD | SLAKE | Overall |
-|---|---|---|---|
-| Qwen3.5-9B, Ollama Q4_K_M | 56.5 [49.5, 63.5] | 57.5 [50.5, 64.0] | 57.0 [52.2, 61.8] |
-| Qwen3.5-2B, bfloat16 | 15.5 [11.0, 20.5] | 27.5 [21.5, 33.5] | 21.5 [17.5, 25.5] |
-| Qwen3.5-2B, secondary metric¹ | 47.5 [40.5, 54.5] | 46.5 [39.5, 53.5] | 47.0 [42.0, 51.7] |
-| *Paper: Qwen3.5-9B base* | *68.10* | *76.80* | |
-| *Paper: Qwen3.5-9B + MedEvo* | *70.40* | *78.23* | |
+| Model | Metric | VQA-RAD | SLAKE | Overall |
+|---|---|---|---|---|
+| Qwen3.5-9B, Ollama Q4_K_M | primary | 56.5 [49.5, 63.5] | 57.5 [50.5, 64.0] | 57.0 [52.2, 61.8] |
+| Qwen3.5-2B, before adaptation | primary | 15.5 [11.0, 20.5] | 27.5 [21.5, 33.5] | 21.5 [17.5, 25.5] |
+| Qwen3.5-2B, after adaptation | primary | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
+| Qwen3.5-2B, before adaptation | secondary¹ | 47.5 [40.5, 54.5] | 46.5 [39.5, 53.5] | 47.0 [42.0, 51.7] |
+| Qwen3.5-2B, after adaptation | secondary¹ | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
+| *Paper: Qwen3.5-9B base* | | *68.10* | *76.80* | |
+| *Paper: Qwen3.5-9B + MedEvo* | | *70.40* | *78.23* | |
 
-¹ Reads a boxed `1`/`0` as yes/no on yes/no questions (protocol amendment 01). Qwen3.5-2B did this in
-190 of 400 answers, so most of its primary-metric errors are answer-format errors.
+¹ Reads a boxed `1`/`0` as yes/no on yes/no questions (protocol amendment 01), separating answer format from
+answer content. Qwen3.5-2B boxed `1`/`0` in 190 of 400 answers before adaptation and in 10 after.
+
+**Effect of adaptation** (paired, same 400 questions):
+
+| Metric | Change | 95% CI | Fixed / broken | McNemar p |
+|---|---|---|---|---|
+| Primary | +28.5 points | [23.5, 33.5] | 127 / 13 | < 0.001 |
+| Secondary (format-independent) | +3.0 points | [-1.0, 6.8] | 38 / 26 | 0.17 |
+
+Adaptation on 43 examples raised strict accuracy from 21.5% to 50.0%, mainly by correcting the answer
+format. The format-independent gain is not significant at this sample size; the largest content change was
+on VQA-RAD open questions (15.7% to 24.7%; paired +9.0 points, 95% CI [1.1, 16.9], McNemar p = 0.057).
 
 The paper's numbers use full benchmarks, full-precision weights and MedUniEval scoring. Most of the gap to
 our Qwen3.5-9B result is on open-ended questions (VQA-RAD 28.1%, SLAKE 41.0%), where strict exact
@@ -156,7 +169,7 @@ protocol: [docs/protocol.md](docs/protocol.md).
 | 2 | Data preparation and evaluation infrastructure | Complete |
 | 3 | Frozen protocol, test baselines, training bank | Complete (bank v2: 43 examples) |
 | 4 | LoRA adaptation of Qwen3.5-2B | Complete (43 examples, 2 epochs, 11 optimizer steps) |
-| 5 | Adapted-model evaluation and technical report | Pending |
+| 5 | Adapted-model evaluation and compiled results | Complete |
 
 ## Limitations
 

@@ -13,6 +13,8 @@ Every prediction records the raw model response; scores can be recomputed with `
 | `baselines/qwen35_9b/` | Qwen3.5-9B (Ollama, Q4_K_M) on the 400 reserved test questions |
 | `baselines/qwen35_2b/` | Qwen3.5-2B (Transformers, bfloat16) on the same 400 questions |
 | `training_bank_v1/` | Phase 3 collection on 100 training questions: every case decision (`cases.jsonl`), the admitted examples (`training_bank.jsonl`) and the summary |
+| `adapted/qwen35_2b/` | Qwen3.5-2B with the LoRA adapter on the same 400 reserved test questions |
+| `compiled/` | All systems compiled by `compile_results.py`: tables, paired bootstrap intervals and McNemar tests |
 | `adaptation_v1/` | LoRA training run on the 43-example bank: settings, per-example loss log and adapter configuration (adapter weights not included) |
 | `training_bank_v2/` | Re-audit of the 60 v1 failures with the MedEvo-aligned audit prompt; final bank of 43 examples used for training |
 
@@ -60,3 +62,22 @@ v2 outcomes: 3 repairs admitted, 54 with all continuations rejected, 1 hint reje
 | Mean training loss | epoch 1: 0.421, epoch 2: 0.259 |
 
 The schedule was fixed before training; no checkpoint was selected on feedback or test data.
+
+## Phase 5 evaluation
+
+Same 400 questions, prompt, budget and scorer as the baselines.
+
+| Qwen3.5-2B | Primary | Secondary | Boxed 1/0 | Truncated |
+|---|---|---|---|---|
+| Before adaptation | 21.5 [17.5, 25.5] | 47.0 [42.0, 51.7] | 190 | 6 |
+| After adaptation | 50.0 [45.0, 54.8] | 50.0 [45.0, 54.8] | 10 | 5 |
+
+| Subset | Before | After |
+|---|---|---|
+| VQA-RAD closed (primary) | 15.3 | 72.1 |
+| SLAKE closed (primary) | 26.9 | 79.5 |
+| VQA-RAD open | 15.7 | 24.7 |
+| SLAKE open | 27.9 | 29.5 |
+
+Paired change: primary +28.5 points (95% CI [23.5, 33.5], McNemar p < 0.001); secondary +3.0 points
+(95% CI [-1.0, 6.8], p = 0.17). Full paired tables: `compiled/results.md`.

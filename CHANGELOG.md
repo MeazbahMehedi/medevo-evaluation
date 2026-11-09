@@ -2,6 +2,16 @@
 
 All notable changes to this project are documented in this file.
 
+## [0.5.0] - 2026-11-09
+
+Phase 5: adapted-model evaluation.
+
+### Added
+- Qwen3.5-2B with the LoRA adapter evaluated on the 400 reserved test questions: primary metric 21.5% to
+  50.0% (+28.5 points, McNemar p < 0.001); format-independent secondary metric 47.0% to 50.0%
+  (+3.0 points, 95% CI [-1.0, 6.8], p = 0.17). Boxed `1`/`0` answers fell from 190 to 10.
+- Compiled results for all systems with paired bootstrap intervals and McNemar tests (`results/compiled/`).
+
 ## [0.4.0] - 2026-11-09
 
 Phase 4: LoRA adaptation.
