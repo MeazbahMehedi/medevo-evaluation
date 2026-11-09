@@ -234,4 +234,4 @@ Citation metadata for this repository is in [CITATION.cff](CITATION.cff). Datase
 ## License
 
 Code and documentation: [MIT](LICENSE). Benchmark data keeps its original licenses
-(VQA-RAD: CC0 1.0; SLAKE: CC BY 4.0).
+(VQA-RAD: CC0 1.0; SLAKE: CC BY 4.0)..
