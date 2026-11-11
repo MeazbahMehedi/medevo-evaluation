@@ -11,16 +11,27 @@ An independent, reduced-scale evaluation of
 [MedEvo: Medical Reasoning Evolution through Knowledge Navigation](https://arxiv.org/abs/2610.17690)
 on the VQA-RAD and SLAKE medical visual question answering benchmarks, run on a single CPU workstation.
 
-The authors' code, training data and weights have not been released, so this repository implements the
+The authors' training code, data and weights have not been released, so this repository implements the
 method's core loop independently: sample reasoning from a primary model, keep verified correct rollouts,
 let a reference-free auditor locate the first error in failed rollouts, regenerate from the supported prefix
-with a minimal hint, admit only checked examples, and fine-tune with LoRA. All decisions that could
-affect results (prompt, output budget, metrics, test subset) are fixed on feedback data before any
-test-set generation.
+with a minimal hint, admit only checked examples, and fine-tune with LoRA. The prompt, output budget, primary
+metric and test subset were fixed on feedback data before any test-set generation.
 
-**Status:** all five phases complete: frozen protocol, test baselines, a 43-example training bank, LoRA
-adaptation of Qwen3.5-2B and its evaluation on the same reserved test questions.
-See [Project status](#project-status).
+**Status:** complete. About 4 days of development and about 15 hours of CPU computation
+(see [Compute](#compute)).
+
+## Key findings
+
+1. **One round of MedEvo-style training raised Qwen3.5-2B from 21.5% to 50.0%** on 400 held-out test
+   questions (+28.5 points, 95% CI [23.5, 33.5], McNemar p < 0.001), using 43 training examples.
+2. **Most of the gain is answer format.** Before training the model boxed `1`/`0` instead of yes/no in 190 of
+   400 answers; after training, 10. With `1`/`0` accepted as yes/no, the gain is +3.0 points (p = 0.17).
+3. **A possible content gain on VQA-RAD open questions:** 15.7% → 24.7% (+9.0 points, p = 0.057), not
+   conclusive at this sample size.
+4. **The repair step yielded little at 2B scale.** The auditor proposed repairs for 58 of 60 failed answers,
+   but 268 of 280 hinted continuations were still wrong; 3 repairs were admitted.
+5. **Qwen3.5-9B scores below the paper** (57.0% overall), mainly on open questions where strict exact match
+   rejects equivalent wording; its closed-question accuracy is 79.3% (VQA-RAD) and 83.3% (SLAKE).
 
 ## Results
 
@@ -32,48 +43,27 @@ Reserved test subsets: 200 questions per dataset, stratified by open/closed answ
 | Model | Metric | VQA-RAD | SLAKE | Overall |
 |---|---|---|---|---|
 | Qwen3.5-9B, Ollama Q4_K_M | primary | 56.5 [49.5, 63.5] | 57.5 [50.5, 64.0] | 57.0 [52.2, 61.8] |
-| Qwen3.5-2B, before adaptation | primary | 15.5 [11.0, 20.5] | 27.5 [21.5, 33.5] | 21.5 [17.5, 25.5] |
-| Qwen3.5-2B, after adaptation | primary | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
-| Qwen3.5-2B, before adaptation | secondary¹ | 47.5 [40.5, 54.5] | 46.5 [39.5, 53.5] | 47.0 [42.0, 51.7] |
-| Qwen3.5-2B, after adaptation | secondary¹ | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
+| Qwen3.5-2B, base | primary | 15.5 [11.0, 20.5] | 27.5 [21.5, 33.5] | 21.5 [17.5, 25.5] |
+| Qwen3.5-2B, adapted | primary | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
+| Qwen3.5-2B, base | secondary¹ | 47.5 [40.5, 54.5] | 46.5 [39.5, 53.5] | 47.0 [42.0, 51.7] |
+| Qwen3.5-2B, adapted | secondary¹ | 51.0 [44.0, 58.0] | 49.0 [42.0, 56.0] | **50.0** [45.0, 54.8] |
 | *Paper: Qwen3.5-9B base* | | *68.10* | *76.80* | |
 | *Paper: Qwen3.5-9B + MedEvo* | | *70.40* | *78.23* | |
 
 ¹ Reads a boxed `1`/`0` as yes/no on yes/no questions (protocol amendment 01), separating answer format from
-answer content. Qwen3.5-2B boxed `1`/`0` in 190 of 400 answers before adaptation and in 10 after.
+answer content.
 
-**Effect of adaptation** (paired, same 400 questions):
+![Format vs content](docs/assets/format_vs_content.svg)
 
-| Metric | Change | 95% CI | Fixed / broken | McNemar p |
+| Paired effect of adaptation | Change | 95% CI | Fixed / broken | McNemar p |
 |---|---|---|---|---|
-| Primary | +28.5 points | [23.5, 33.5] | 127 / 13 | < 0.001 |
-| Secondary (format-independent) | +3.0 points | [-1.0, 6.8] | 38 / 26 | 0.17 |
+| Primary metric | +28.5 | [23.5, 33.5] | 127 / 13 | < 0.001 |
+| Secondary metric (format-independent) | +3.0 | [-1.0, 6.8] | 38 / 26 | 0.17 |
 
-Adaptation on 43 examples raised strict accuracy from 21.5% to 50.0%, mainly by correcting the answer
-format. The format-independent gain is not significant at this sample size; the largest content change was
-on VQA-RAD open questions (15.7% to 24.7%; paired +9.0 points, 95% CI [1.1, 16.9], McNemar p = 0.057).
+Results by question type, diagnostics, error analysis and the comparison with the paper:
+**[docs/results.md](docs/results.md)**. Per-question records: [results/](results/README.md).
 
-The paper's numbers use full benchmarks, full-precision weights and MedUniEval scoring. Most of the gap to
-our Qwen3.5-9B result is on open-ended questions (VQA-RAD 28.1%, SLAKE 41.0%), where strict exact
-match rejects equivalent wording; closed questions score 79.3% and 83.3%.
-
-Phase 3 training bank (100 training questions, 4 rollouts each): **43 examples**, 40 verified correct
-rollouts and 3 admitted repairs.
-
-| Stage | Result |
-|---|---|
-| v1 audit (instruction did not state that the trajectory failed) | 60 of 60 failures skipped, 0 repairs |
-| v2 re-audit (aligned with MedEvo Appendix D.3) | repair proposed for 58 of 60 failures |
-| Continuations (up to 5 per failure, 280 total) | 268 still incorrect; 10 correct and clean |
-| Learnability gates (paper thresholds) | 3 admitted |
-
-Most proposed errors were visual misreadings (52 V, 6 K). The binding constraint was the 2B model's ability
-to correct itself after a hint. In 31 failures the only problem was a boxed `1`/`0`; the reference-free
-auditor treated these as reasoning errors, and the model kept boxing `1`/`0` in 112 continuations.
-
-Full tables and per-question records: [results/](results/README.md).
-
-## Method
+## How it works
 
 ```mermaid
 flowchart TD
@@ -88,49 +78,34 @@ flowchart TD
     B --> L[LoRA fine-tuning] --> E[Evaluate on frozen test set]
 ```
 
-| Component | MedEvo paper | This study |
+| Role | Model | Runtime |
 |---|---|---|
-| Primary (trained) model | Qwen3.5-9B / 35B / 397B | Qwen3.5-2B, trainable on CPU |
-| Reference model | — | Qwen3.5-9B, evaluated unadapted |
-| Auditor | GPT-5.6-sol, reference-free | Qwen3.5-9B via Ollama, reference-free |
-| Rollouts per question | 8 | 4 |
-| Error localization | entropy proposal + audit | audit only |
-| Admission | answer, boundary, integrity, learnability | answer, boundary range, integrity, hint-leak guard, learnability (paper thresholds, v2) |
-| Continuations per repair | up to 5 | up to 5 |
-| Rounds | 3, feedback-guided | 1 |
-| Training | SFT | LoRA (rank 16) on language-model layers |
+| Primary (trained) | Qwen3.5-2B | Transformers, LoRA rank 16 on language-model layers |
+| Reference and auditor | Qwen3.5-9B, Q4_K_M | Ollama, CPU |
 
-The reference answer is used only to verify correctness and to reject hints that reveal it; it is never
-sent to the primary model or the auditor.
+Phase 3 collected a **43-example training bank**: 40 verified correct rollouts and 3 admitted repairs.
 
-## Repository layout
+![Phase 3 funnel](docs/assets/phase3_funnel.svg)
 
-```
-├── medevo_study/            Frozen-protocol pipeline: data, scoring, backends, Phase 3 logic
-├── src/                     Data preparation, evaluation and earlier experiment modules
-├── configs/                 Data sources and earlier experiment configurations
-├── data/benchmarks/         Split manifests (images distributed separately, see data/README.md)
-├── results/                 Protocol, test baselines, feedback runs, training bank
-├── docs/                    Protocol, data sources, setup, run guide
-│   ├── experiments/         Notes from Phase 1–2 experiments
-│   └── verification/        Verification records and test logs
-├── tests/
-├── freeze_protocol.py       Fix prompt, budget, metrics and test subset
-├── prepare_primary_model.py Pin and check Qwen3.5-2B
-├── run_test_evaluation.py   Evaluate a system on the frozen questions
-├── build_training_bank.py   Phase 3 collection (v1)
-├── reaudit_failures.py      Phase 3 re-audit with the MedEvo audit prompt (v2)
-├── train_adapter.py         Phase 4 LoRA training
-└── compile_results.py       Result tables and report draft
-```
+Components, admission checks and learnability gates: **[docs/architecture.md](docs/architecture.md)**.
 
-The remaining top-level scripts (`evaluate.py`, `evaluate_feedback.py`, `check_*.py` and others) are the
-Phase 1–2 entry points; they are documented in [docs/experiments](docs/experiments/).
+## Compute
+
+One Windows 11 workstation: AMD Ryzen 7 9800X3D (8 cores), 32 GB RAM, no GPU.
+
+| Work | Time |
+|---|---|
+| Development: code, tests, debugging, preliminary experiments | about 4 days |
+| Test evaluations (3 systems × 400 questions) | 9.6 h |
+| Phase 3 training bank (collection and re-audit) | 5.3 h |
+| LoRA training (2 epochs, 43 examples) | 19 min |
+| **Total computation** | **about 15 h** |
+
+Stage-by-stage timeline: [docs/results.md](docs/results.md#compute-and-timeline).
 
 ## Getting started
 
 Requirements: Python 3.12, about 16 GB of free RAM, [Ollama](https://ollama.com) for Qwen3.5-9B.
-The recorded environment is Windows 11 on an AMD Ryzen 7 9800X3D with 32 GB RAM, CPU only.
 
 ```powershell
 py -V:3.12 -m venv .venv312
@@ -140,7 +115,7 @@ $py = '.\.venv312\Scripts\python.exe'
 ollama pull qwen3.5:9b
 ```
 
-Get the benchmark images (see [data/README.md](data/README.md)), then check the installation:
+Get the benchmark images (see [Downloads](#downloads)), then check the installation:
 
 ```powershell
 & $py evaluate.py inspect
@@ -152,20 +127,14 @@ Get the benchmark images (see [data/README.md](data/README.md)), then check the 
 | Release | Contents | Size |
 |---|---|---|
 | [`data-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/data-v1) | Prepared VQA-RAD and SLAKE images (`medevo-benchmark-images-v1.zip`) | 222 MB |
-| [`adapter-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/adapter-v1) | LoRA adapter for Qwen3.5-2B trained on the Phase 3 bank (`medevo-lora-adapter-v1.zip`) | 62 MB |
-
-To evaluate the released adapter without retraining:
-
-```powershell
-& $py run_test_evaluation.py --system adapted --adapter-dir path\to\adapter
-```
+| [`adapter-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/adapter-v1) | LoRA adapter for Qwen3.5-2B (`medevo-lora-adapter-v1.zip`) | 62 MB |
 
 ## Reproducing the study
 
 **Re-running the reported study** uses the published frozen protocol:
 
-1. Extract `medevo-benchmark-images-v1.zip` (release [`data-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/data-v1))
-   into `data/benchmarks/`. The scripts check the data hashes against the protocol and stop if they differ.
+1. Extract `medevo-benchmark-images-v1.zip` into `data/benchmarks/`. The scripts check the data hashes against
+   the protocol and stop if they differ.
 2. Copy the protocol to the folder the scripts read:
 
    ```powershell
@@ -184,49 +153,44 @@ To evaluate the released adapter without retraining:
    & $py compile_results.py
    ```
 
-To evaluate the released adapter without retraining, use the folder extracted from
-[`adapter-v1`](https://github.com/MeazbahMehedi/medevo-evaluation/releases/tag/adapter-v1) as `--adapter-dir`.
+To evaluate the released adapter without retraining, pass its extracted folder as `--adapter-dir`.
 Long runs are resumable: re-running a command continues from the last completed question.
 
 **Starting a new experiment:** `freeze_protocol.py` builds a new protocol from feedback runs, which are not stored in
 the repository. Run `evaluate_feedback.py` and `compare_feedback_budget.py` first (inspect, then run), then
 `freeze_protocol.py --per-dataset 200` and `prepare_primary_model.py`. If the budget rule cannot decide, pass `--budget`
-with `--reason`; the reported protocol used this manual override (see `budget_decision` in
-[results/protocol/protocol.json](results/protocol/protocol.json)). `freeze_protocol.py` refuses to overwrite an existing
-protocol. Full guide with run times: [docs/running_the_study.md](docs/running_the_study.md).
+with `--reason`. Full guide: [docs/running_the_study.md](docs/running_the_study.md).
 
-## Evaluation protocol
+## Repository layout
 
-- Prompt (paper, Appendix D.1): `Please reason step by step, and put your final answer within \boxed{}.`
-- Output budget: 1024 tokens, chosen on feedback questions before any test run.
-- Decoding: greedy for evaluation; sampled (temperature 0.7, top-p 0.8, top-k 20) for Phase 3 rollouts.
-- Metrics: primary and secondary exact match, token F1, boxed-answer rate, truncations, latency.
-- Uncertainty: percentile bootstrap (10,000 resamples); paired bootstrap and exact McNemar test
-  for systems evaluated on the same questions.
-- Data roles: training questions are used only in Phase 3, feedback questions only for protocol
-  decisions, and test questions only for final evaluation.
+```
+├── medevo_study/            Frozen-protocol pipeline: scoring, backends, Phase 3 logic
+├── src/                     Data preparation, evaluation and earlier experiment modules
+├── configs/                 Data sources and earlier experiment configurations
+├── data/benchmarks/         Split manifests (images in release data-v1)
+├── results/                 Protocol, test results, feedback runs, training banks, adapter run
+├── docs/                    Results, architecture, protocol, data sources, setup, run guide
+├── tests/
+├── freeze_protocol.py       Fix prompt, budget, metrics and test subset
+├── prepare_primary_model.py Pin and check Qwen3.5-2B
+├── run_test_evaluation.py   Evaluate a system on the frozen questions
+├── build_training_bank.py   Phase 3 collection (v1)
+├── reaudit_failures.py      Phase 3 re-audit with the MedEvo audit prompt (v2)
+├── train_adapter.py         Phase 4 LoRA training
+└── compile_results.py       Result tables
+```
 
-Frozen protocol: [results/protocol/protocol.json](results/protocol/protocol.json). Phase 2 evaluation
-protocol: [docs/protocol.md](docs/protocol.md).
-
-## Project status
-
-| Phase | Scope | Status |
-|---|---|---|
-| 1 | Environment and CPU feasibility | Complete |
-| 2 | Data preparation and evaluation infrastructure | Complete |
-| 3 | Frozen protocol, test baselines, training bank | Complete (bank v2: 43 examples) |
-| 4 | LoRA adaptation of Qwen3.5-2B | Complete (43 examples, 2 epochs, 11 optimizer steps) |
-| 5 | Adapted-model evaluation and compiled results | Complete |
+The remaining top-level scripts (`evaluate.py`, `evaluate_feedback.py`, `check_*.py` and others) are the
+Phase 1–2 entry points, documented in [docs/experiments](docs/experiments/).
 
 ## Limitations
 
-- Independent implementation of a reduced MedEvo loop; not the authors' code and not a reproduction of
-  their published scores.
-- Smaller trainable model, quantized reference model, CPU execution and a much weaker auditor than the paper.
-- 200-question test subsets give intervals of about ±7 points, too wide to resolve the paper's 1–2 point gains.
-- Lexical scoring; model readings and reference answers were not clinically adjudicated.
-- Splits separate exact images only; patient-level and near-duplicate separation are not established.
+- Independent implementation of a reduced MedEvo loop (one round, four rollouts, a much weaker auditor, LoRA
+  instead of full SFT); not the authors' code.
+- Smaller trained model (2B) and a 4-bit quantized reference model.
+- 200-question subsets give intervals of about ±7 points, too wide to resolve the paper's 1–2 point gains.
+- Exact-match scoring penalizes equivalent wording; answers were not clinically checked.
+- No run trained on the 40 correct rollouts alone, so the repairs' own effect cannot be separated.
 
 ## Citation
 
@@ -249,4 +213,4 @@ Citation metadata for this repository is in [CITATION.cff](CITATION.cff). Datase
 ## License
 
 Code and documentation: [MIT](LICENSE). Benchmark data keeps its original licenses
-(VQA-RAD: CC0 1.0; SLAKE: CC BY 4.0)..
+(VQA-RAD: CC0 1.0; SLAKE: CC BY 4.0).
