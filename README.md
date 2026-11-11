@@ -91,7 +91,15 @@ Components, admission checks and learnability gates: **[docs/architecture.md](do
 
 ## Compute
 
-One Windows 11 workstation: AMD Ryzen 7 9800X3D (8 cores), 32 GB RAM, no GPU.
+### Hardware
+
+| Component | Specification |
+|---|---|
+| CPU | AMD Ryzen 7 9800X3D, 8 cores / 16 threads, up to 4.7 GHz, AVX-512 |
+| Memory | 32 GB DDR5 (2 × 16 GB, 4800 MT/s) |
+| GPU | Integrated AMD Radeon Graphics (512 MB); not used, all runs on CPU |
+| Operating system | Windows 11 Pro |
+| Software | Python 3.12.10, PyTorch 2.15.0 (CPU), Transformers 5.22.2, PEFT 0.21.2, Ollama 0.40.15 |
 
 | Work | Time |
 |---|---|

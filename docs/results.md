@@ -107,8 +107,17 @@ too short 2, too many boxes 1. Of the 7 learnability rejections, 6 had Δ_repair
 
 ## Compute and timeline
 
-One Windows 11 workstation: AMD Ryzen 7 9800X3D (8 cores), 32 GB RAM, no GPU. Qwen3.5-2B generates about
-9.1 tokens/s and uses about 4.9 GB of memory.
+### Hardware
+
+| Component | Specification |
+|---|---|
+| CPU | AMD Ryzen 7 9800X3D, 8 cores / 16 threads, up to 4.7 GHz, AVX-512 |
+| Memory | 32 GB DDR5 (2 × 16 GB, 4800 MT/s) |
+| GPU | Integrated AMD Radeon Graphics (512 MB); not used, all runs on CPU |
+| Operating system | Windows 11 Pro |
+| Software | Python 3.12.10, PyTorch 2.15.0 (CPU), Transformers 5.22.2, PEFT 0.21.2, Ollama 0.40.15 |
+
+Qwen3.5-2B generates about 9.1 tokens/s and uses about 4.9 GB of memory.
 
 ![Computation per stage](assets/compute_time.svg)
 
